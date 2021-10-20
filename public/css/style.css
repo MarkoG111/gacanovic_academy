@@ -1,0 +1,1782 @@
+/*
+Template Name: Trealop
+Author: <a href="https://www.os-templates.com/">OS Templates</a>
+Author URI: https://www.os-templates.com/
+Copyright: OS-Templates.com
+Licence: Free to use under our free template licence terms
+Licence URI: https://www.os-templates.com/template-terms
+File: Layout CSS
+*/
+
+/* Rows
+--------------------------------------------------------------------------------------------------------------- */
+
+.row1 {
+    border-bottom: 2px solid;
+}
+
+body, html {
+    font-family: 'Lato', sans-serif;
+}
+
+.fl_left .nospace {
+    text-align: center;
+}
+
+/* Top Bar
+--------------------------------------------------------------------------------------------------------------- */
+
+#topbar {
+    padding: 15px 0;
+    text-transform: uppercase;
+}
+
+#topbar ul li {
+    display: inline-block;
+    margin-right: 15px;
+}
+
+#topbar ul li:last-child {
+    margin-right: 0;
+    padding-right: 0;
+    border-right: none;
+}
+
+#topbar i {
+    line-height: normal;
+}
+
+/* Header
+--------------------------------------------------------------------------------------------------------------- */
+
+#header #logo {
+    margin: 30px 0 0 0;
+}
+
+#header #logo h1 {
+    margin: 0;
+    padding: 0;
+    font-size: 40px;
+    text-transform: uppercase;
+}
+
+/* Page Intro
+--------------------------------------------------------------------------------------------------------------- */
+
+#pageintro {
+    padding: 180px 0;
+}
+
+#pageintro article {
+    display: inline-block;
+    max-width: 75%;
+}
+
+#pageintro .heading {
+    margin-bottom: 20px;
+    font-size: 4rem;
+}
+
+#pageintro p:first-of-type {
+    margin: 0 0 20px 0;
+    text-transform: uppercase;
+    font-size: 1.6rem;
+    letter-spacing: 5px;
+}
+
+#pageintro footer {
+    margin-top: 50px;
+}
+
+.number {
+    width: 20px;
+    height: 20px;
+    border-radius: 50px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #202020;
+    background-color: #f5d730;
+    display: block;
+    overflow: hidden;
+    text-align: center;
+    line-height: 20px;
+    margin-top: 5px;
+    position: relative;
+    left: -7px;
+}
+
+.number:hover {
+    text-decoration: none !important;
+}
+
+@media only screen and (max-width: 479px) {
+    .number {
+        width: 16px;
+        height: 16px;
+        margin-top: 7px;
+        font-size: 10px;
+        line-height: 16px;
+    }
+}
+
+.number {
+    left: 0;
+}
+
+.pageintro-wrap {
+    background: #d0d0d0;
+    padding: 40px;
+}
+
+/* Pagination */
+
+/* .pagination {
+    display: block;
+    width: 100%;
+    text-align: center;
+    clear: both;
+}
+
+.pagination li {
+    display: inline-block;
+    margin: 0 2px 0 0;
+    background-color: #53D3DE;
+    border: none;
+}
+
+.pagination li:last-child {
+    margin-right: 0;
+} */
+
+h1 {
+    font-size: 1.5em;
+    margin-top: 0;
+}
+
+#table-log {
+    font-size: 0.85rem;
+}
+
+.sidebar {
+    font-size: 0.85rem;
+    line-height: 1;
+}
+
+.btn {
+    font-size: 0.7rem;
+}
+
+.stack {
+    font-size: 0.85em;
+}
+
+.date {
+    min-width: 75px;
+}
+
+.text {
+    word-break: break-all;
+}
+
+a.llv-active {
+    z-index: 2;
+    background-color: #f5f5f5;
+    border-color: #777;
+}
+
+.list-group-item {
+    word-wrap: break-word;
+}
+
+.folder {
+    padding-top: 15px;
+}
+
+.div-scroll {
+    height: 80vh;
+    overflow: hidden auto;
+}
+
+.nowrap {
+    white-space: nowrap;
+}
+
+body[data-theme="dark"] {
+    background-color: #151515;
+    color: #cccccc;
+}
+
+[data-theme="dark"] a {
+    color: #4da3ff;
+}
+
+[data-theme="dark"] a:hover {
+    color: #a8d2ff;
+}
+
+[data-theme="dark"] .list-group-item {
+    background-color: #1d1d1d;
+    border-color: #444;
+}
+
+[data-theme="dark"] a.llv-active {
+    background-color: #0468d2;
+    border-color: rgba(255, 255, 255, 0.125);
+    color: #ffffff;
+}
+
+[data-theme="dark"] a.list-group-item:focus, [data-theme="dark"] a.list-group-item:hover {
+    background-color: #273a4e;
+    border-color: rgba(255, 255, 255, 0.125);
+    color: #ffffff;
+}
+
+[data-theme="dark"] .table td, [data-theme="dark"] .table th, [data-theme="dark"] .table thead th {
+    border-color: #616161;
+}
+
+[data-theme="dark"] .page-item.disabled .page-link {
+    color: #8a8a8a;
+    background-color: #151515;
+    border-color: #5a5a5a;
+}
+
+[data-theme="dark"] .page-link {
+    background-color: #151515;
+    border-color: #5a5a5a;
+}
+
+[data-theme="dark"] .page-item.active .page-link {
+    color: #fff;
+    background-color: #0568d2;
+    border-color: #007bff;
+}
+
+[data-theme="dark"] .page-link:hover {
+    color: #ffffff;
+    background-color: #0051a9;
+    border-color: #0568d2;
+}
+
+[data-theme="dark"] .form-control {
+    border: 1px solid #464646;
+    background-color: #151515;
+    color: #bfbfbf;
+}
+
+[data-theme="dark"] .form-control:focus {
+    color: #bfbfbf;
+    background-color: #212121;
+    border-color: #4a4a4a;
+}
+
+.page-link {
+    padding: 12px 16px!important;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* .pagination a:hover {
+    color: #fff;
+    text-decoration: none;
+    background-color: #1D8B94;
+} */
+
+.imgg {
+    width: 100%;
+}
+
+.clear {
+    clear: both;
+}
+
+/* Style the search field */
+
+form.example input[type=text] {
+    padding: 10px;
+    font-size: 17px;
+    border: 1px solid grey;
+    color: #000;
+    float: left;
+    width: 70%;
+    background: #f1f1f1;
+}
+
+/* Style the submit button */
+
+form.example button {
+    float: left;
+    width: 30%;
+    padding: 6px;
+    background-color: #53D3DE;
+    font-size: 17px;
+    border: 1px solid grey;
+    border-left: none;
+    /* Prevent double borders */
+    cursor: pointer;
+}
+
+form.example button:hover {
+    background-color: #1D8B94;
+}
+
+form.example .fa-search {
+    color: #fff;
+}
+
+/* Clear floats */
+
+form.example::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.subtitle {
+    font-size: 30px;
+}
+
+.subscribeTitle {
+    font-size: 34px;
+    letter-spacing: 2px;
+}
+
+/* Content Area
+--------------------------------------------------------------------------------------------------------------- */
+
+.container {
+    padding: 80px 0;
+}
+
+/* Content */
+
+.sectiontitle {
+    display: block;
+    max-width: 55%;
+    margin: 0 auto 80px;
+    text-align: center;
+}
+
+.sectiontitle * {
+    margin: 0;
+}
+
+/* Prices */
+
+.prices li {
+    margin-bottom: 50px;
+}
+
+/* Default 30px, but must compensate for the 20px negative footer margin */
+
+.prices li:nth-last-child(-n+3) {
+    margin-bottom: 0;
+}
+
+/* Removes bottom margin from the last three items - margin is restored in the media queries when items stack */
+
+.prices li:nth-child(3n+1) {
+    margin-left: 0;
+    clear: left;
+}
+
+/* Removes the need to add class="first" */
+
+.prices li article {
+    display: block;
+    position: relative;
+    padding: 40px 25px;
+    border: 1px solid;
+    text-align: center;
+}
+
+/* Uses the one_third width in pixels */
+
+.prices li article * {
+    margin: 0 0 30px 0;
+}
+
+.prices li article i {
+    display: inline-block;
+    font-size: 80px;
+}
+
+.prices li article .heading {
+    text-transform: uppercase;
+}
+
+.prices li article p:last-of-type {
+    display: inline-block;
+    position: relative;
+    padding-left: 18px;
+    font-weight: 400;
+}
+
+.prices li article p:last-of-type * {
+    margin: 0;
+    line-height: 1;
+}
+
+.prices li article p:last-of-type sup {
+    position: absolute;
+    top: 3px;
+    left: 0;
+    font-size: 1.2rem;
+}
+
+.prices li article p:last-of-type strong {
+    margin-right: 5px;
+    font-size: 50px;
+}
+
+.prices li article p:last-of-type em {
+    font-style: normal;
+}
+
+.prices li article footer {
+    margin: 0 0 -60px 0;
+    padding: 0;
+}
+
+.prices li article footer a {
+    margin-bottom: 0;
+}
+
+/* Click to Action
+--------------------------------------------------------------------------------------------------------------- */
+
+.cta {
+    padding: 50px 0;
+}
+
+.cta> :first-child {
+    margin-top: 10px;
+}
+
+.cta> :last-child {
+    margin-bottom: 0;
+}
+
+/* Used when elements stack in smaller viewports */
+
+.cta footer {
+    text-align: center;
+}
+
+.cta footer a {
+    display: block;
+}
+
+/* CTA - Click to Action
+--------------------------------------------------------------------------------------------------------------- */
+
+#cta {
+    border-top: 1px solid;
+}
+
+#cta ul li div {
+    position: relative;
+    min-height: 30px;
+    padding: 0 0 0 35px;
+    line-height: 1;
+}
+
+#cta ul li div i {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 25px;
+    height: 23px;
+    font-size: 20px;
+    text-align: center;
+}
+
+#cta ul li div span {
+    display: block;
+}
+
+#cta ul li div strong {
+    display: block;
+    margin: 0 0 8px 0;
+}
+
+/* Footer
+--------------------------------------------------------------------------------------------------------------- */
+
+#footer {
+    padding: 80px 0;
+}
+
+#footer .heading {
+    margin-bottom: 50px;
+    font-size: 1.2rem;
+}
+
+#footer .linklist li {
+    display: block;
+    margin-bottom: 15px;
+    padding: 0 0 15px 0;
+    border-bottom: 1px solid;
+}
+
+#footer .linklist li:last-child {
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+#footer .linklist li::before, #footer .linklist li::after {
+    display: table;
+    content: "";
+}
+
+#footer .linklist li, #footer .linklist li::after {
+    clear: both;
+}
+
+#footer input, #footer button {
+    border: 1px solid;
+}
+
+#footer input {
+    display: block;
+    width: 100%;
+    padding: 8px;
+}
+
+#footer button {
+    padding: 8px 18px 10px;
+    text-transform: uppercase;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+/* Copyright
+--------------------------------------------------------------------------------------------------------------- */
+
+#copyright {
+    padding: 20px 0;
+}
+
+#copyright * {
+    margin: 0;
+    padding: 0;
+}
+
+/* Transition Fade
+This gives a smooth transition to "ALL" elements used in the layout - other than the navigation form used in mobile devices
+If you don't want it to fade all elements, you have to list the ones you want to be faded individually
+Delete it completely to stop fading
+--------------------------------------------------------------------------------------------------------------- */
+
+*, *::before, *::after {
+    transition: all .3s ease-in-out;
+}
+
+#mainav form * {
+    transition: none !important;
+}
+
+/* ------------------------------------------------------------------------------------------------------------ */
+
+/* ------------------------------------------------------------------------------------------------------------ */
+
+/* ------------------------------------------------------------------------------------------------------------ */
+
+/* ------------------------------------------------------------------------------------------------------------ */
+
+/* ------------------------------------------------------------------------------------------------------------ */
+
+/* Navigation
+--------------------------------------------------------------------------------------------------------------- */
+
+nav ul, nav ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+#mainav, #breadcrumb, .sidebar nav {
+    line-height: normal;
+}
+
+#mainav .drop::after, #mainav li li .drop::after, #breadcrumb li a::after, .sidebar nav a::after {
+    position: absolute;
+    font-family: "Font Awesome\ 5 Free";
+    font-weight: 900;
+    font-size: 10px;
+    line-height: 10px;
+}
+
+/* Top Navigation */
+
+#mainav {
+    position: relative;
+    margin-bottom: -2px;
+    z-index: 999;
+}
+
+#mainav ul {
+    text-transform: uppercase;
+}
+
+#mainav ul ul {
+    position: absolute;
+    width: 180px;
+    text-transform: none;
+}
+
+#mainav ul ul ul {
+    left: 180px;
+    top: 0;
+}
+
+#mainav li {
+    display: block;
+    position: relative;
+    float: left;
+    margin: 0;
+    padding: 0;
+}
+
+#mainav li:last-child {
+    margin-right: 0;
+}
+
+#mainav li li {
+    width: 100%;
+    margin: 0;
+}
+
+#mainav li a {
+    display: block;
+    padding: 40px 15px;
+    border-bottom: 2px solid;
+}
+
+#mainav li li a {
+    border-width: 0 0 1px 0;
+}
+
+#mainav .drop {
+    padding-left: 20px;
+}
+
+#mainav li li a, #mainav li li .drop {
+    display: block;
+    margin: 0;
+    padding: 10px 15px;
+}
+
+#mainav .drop::after, #mainav li li .drop::after {
+    content: "\f0d7";
+}
+
+#mainav .drop::after {
+    top: 45px;
+    left: 10px;
+}
+
+#mainav li li .drop::after {
+    top: 15px;
+    left: 5px;
+}
+
+#mainav ul ul {
+    visibility: hidden;
+    opacity: 0;
+}
+
+#mainav ul li:hover>ul {
+    visibility: visible;
+    opacity: 1;
+}
+
+#mainav form {
+    display: none;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+#mainav form select, #mainav form select option {
+    display: block;
+    cursor: pointer;
+    outline: none;
+}
+
+#mainav form select {
+    width: 100%;
+    padding: 5px;
+    border: none;
+}
+
+#mainav form select option {
+    margin: 5px;
+    padding: 0;
+    border: none;
+}
+
+/* Sidebar Navigation */
+
+.sidebar nav {
+    display: block;
+    width: 100%;
+}
+
+.sidebar nav li {
+    margin: 0 0 3px 0;
+    padding: 0;
+}
+
+.sidebar nav a {
+    display: block;
+    position: relative;
+    margin: 0;
+    padding: 5px 10px 5px 15px;
+    text-decoration: none;
+    border: solid;
+    border-width: 0 0 1px 0;
+}
+
+.sidebar nav a::after {
+    top: 10px;
+    left: 5px;
+    content: "\f0da";
+}
+
+.sidebar nav ul ul a {
+    padding-left: 35px;
+}
+
+.sidebar nav ul ul a::after {
+    left: 25px;
+}
+
+.sidebar nav ul ul ul a {
+    padding-left: 55px;
+}
+
+.sidebar nav ul ul ul a::after {
+    left: 45px;
+}
+
+/* Comments */
+
+#comments ul {
+    margin: 0 0 40px 0;
+    padding: 0;
+    list-style: none;
+}
+
+#comments li {
+    margin: 0 0 10px 0;
+    padding: 15px;
+}
+
+#comments .avatar {
+    float: right;
+    margin: 0 0 10px 10px;
+    padding: 3px;
+    border: 1px solid;
+}
+
+#comments address {
+    font-weight: bold;
+}
+
+#comments time {
+    font-size: smaller;
+}
+
+#comments .comcont {
+    display: block;
+    margin: 0;
+    padding: 0;
+}
+
+#comments .comcont p {
+    margin: 10px 5px 10px 0;
+    padding: 0;
+}
+
+#comments form {
+    display: block;
+    width: 100%;
+}
+
+#comments input, #comments textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid;
+}
+
+#comments textarea {
+    overflow: auto;
+}
+
+#comments div {
+    margin-bottom: 15px;
+}
+
+#comments input[type="submit"], #comments input[type="reset"] {
+    display: inline-block;
+    width: auto;
+    min-width: 150px;
+    margin: 0;
+    padding: 8px 5px;
+    cursor: pointer;
+}
+
+/* Tables + Comments */
+
+table, th, td, #comments .avatar, #comments input, #comments textarea {
+    border-color: #D7D7D7;
+}
+
+#comments input:focus, #comments textarea:focus, #comments *:required:focus {
+    border-color: #53D3DE;
+}
+
+th {
+    color: #FFFFFF;
+    background-color: #373737;
+}
+
+tr, #comments li, #comments input[type="submit"], #comments input[type="reset"] {
+    color: inherit;
+    background-color: #FBFBFB;
+}
+
+tr:nth-child(even), #comments li:nth-child(even) {
+    color: inherit;
+    background-color: #F7F7F7;
+}
+
+table a, #comments a {
+    background-color: inherit;
+}
+
+/* Back to Top */
+
+#backtotop {
+    z-index: 999;
+    display: inline-block;
+    position: fixed;
+    visibility: hidden;
+    bottom: 20px;
+    right: 20px;
+    width: 36px;
+    height: 36px;
+    line-height: 36px;
+    font-size: 16px;
+    text-align: center;
+    opacity: .2;
+}
+
+#backtotop i {
+    display: block;
+    width: 100%;
+    height: 100%;
+    line-height: inherit;
+}
+
+#backtotop.visible {
+    visibility: visible;
+    opacity: .5;
+}
+
+#backtotop:hover {
+    opacity: 1;
+}
+
+/* Font Awesome Social Icons
+--------------------------------------------------------------------------------------------------------------- */
+
+.faico {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.faico li {
+    display: inline-block;
+    margin: 8px 5px 0 0;
+    padding: 0;
+    line-height: normal;
+}
+
+.faico li:last-child {
+    margin-right: 0;
+}
+
+.faico a {
+    display: inline-block;
+    width: 36px;
+    height: 36px;
+    line-height: 36px;
+    font-size: 18px;
+    text-align: center;
+}
+
+.faico a {
+    color: #FFFFFF;
+    background-color: #161616;
+}
+
+.faicon-dribble:hover {
+    background-color: #EA4C89;
+}
+
+.faicon-facebook:hover {
+    background-color: #3B5998;
+}
+
+.faicon-google-plus:hover {
+    background-color: #DB4A39;
+}
+
+.faicon-linkedin:hover {
+    background-color: #0E76A8;
+}
+
+.faicon-twitter:hover {
+    background-color: #00ACEE;
+}
+
+.faicon-vk:hover {
+    background-color: #4E658E;
+}
+
+/* ------------------------------------------------------------------------------------------------------------ */
+
+/* ------------------------------------------------------------------------------------------------------------ */
+
+/* ------------------------------------------------------------------------------------------------------------ */
+
+/* ------------------------------------------------------------------------------------------------------------ */
+
+/* ------------------------------------------------------------------------------------------------------------ */
+
+/* Colours
+--------------------------------------------------------------------------------------------------------------- */
+
+body {
+    color: #474747;
+    background-color: #FFFFFF;
+}
+
+a {
+    color: #53D3DE;
+}
+
+a:active, a:focus {
+    background: transparent;
+}
+
+/* IE10 + 11 Bugfix - prevents grey background */
+
+hr, .borderedbox {
+    border-color: #D7D7D7;
+}
+
+label span {
+    color: #FF0000;
+    background-color: inherit;
+}
+
+input:focus, textarea:focus, *:required:focus {
+    border-color: #53D3DE;
+}
+
+.overlay {
+    color: #FFFFFF;
+    background-color: inherit;
+}
+
+.overlay::after {
+    color: inherit;
+    background-color: rgba(0, 0, 0, .55);
+}
+
+.overlay.gradient::before {
+    background: linear-gradient(90deg, rgba(255, 255, 255, .6) 0%, transparent 100%);
+}
+
+.overlay.light {
+    color: #474747;
+}
+
+.overlay.light::after {
+    background-color: rgba(255, 255, 255, .7);
+}
+
+.authBtn, .authBtn.inverse:hover {
+    color: #444!important;
+    background-color: #53D3DE!important;
+    border-color: #53D3DE!important;
+}
+
+.authBtn:hover, .authBtn.inverse {
+    color: #444!important;
+    background-color: transparent;
+    border-color: inherit;
+}
+
+/* Rows */
+
+.row0 {
+    color: #474747;
+    background-color: #F4F4F4;
+}
+
+.row1 {
+    color: #FFFFFF;
+    background-color: #53D3DE;
+    border-color: #1D8B94;
+}
+
+.row2 {
+    color: #474747;
+    background-color: #F4F4F4;
+}
+
+.row3 {
+    color: #474747;
+    background-color: #FFFFFF;
+}
+
+.row4 {
+    color: #9FA7AF;
+    background-color: #202020;
+}
+
+.row5, .row5 a {
+    color: #9FA7AF;
+    background-color: #161616;
+}
+
+.coloured {
+    color: #FFFFFF;
+    background-color: #1D8B94;
+}
+
+/* Header */
+
+#header #logo h1 a {
+    color: inherit;
+}
+
+/* Page Intro */
+
+#pageintro {
+    color: #FFFFFF;
+}
+
+/* Content Area */
+
+.prices li article {
+    background-color: #FFFFFF;
+    border-color: rgba(0, 0, 0, .1);
+}
+
+.prices li article:hover, .prices li article:hover .btn, .prices .btn:hover {
+    color: #444!important;
+    background-color: #FFFFFF!important;
+    border-color: #53D3DE!important;
+}
+
+.prices li article p:last-of-type strong {
+    color: #1D8B94;
+}
+
+.red {
+    color: #B12E52;
+}
+
+.green {
+    color: #00B900
+}
+
+.blue {
+    color: #359AFF
+}
+
+footer .btn {
+    color: #fff!important;
+}
+
+footer .btn:hover {
+    color: #444!important;
+}
+
+/* CTA - Click to Action */
+
+#cta {
+    border-color: #D7D7D7;
+}
+
+/* Footer */
+
+#footer .heading {
+    color: #FFFFFF;
+}
+
+#footer hr, #footer .borderedbox, #footer .linklist li {
+    border-color: rgba(255, 255, 255, .1);
+}
+
+#footer input, #footer button {
+    border-color: transparent;
+}
+
+#footer input {
+    color: #9FA7AF;
+    background-color: #161616;
+}
+
+#footer input:focus {
+    border-color: #53D3DE;
+}
+
+#footer button {
+    color: #FFFFFF;
+    background-color: #53D3DE;
+}
+
+/* Navigation */
+
+#mainav li a {
+    color: inherit;
+    border-color: transparent;
+}
+
+#mainav .active a, #mainav a:hover, #mainav li:hover>a {
+    color: #FFFFFF;
+    background-color: #1D8B94;
+    border-color: #FFFFFF;
+}
+
+#mainav li li a, #mainav .active li a {
+    color: #FFFFFF;
+    background-color: rgba(83, 211, 222, .5);
+    /* #53D3DE */
+    border-color: rgba(0, 0, 0, .6);
+}
+
+#mainav li li:hover>a, #mainav .active .active>a {
+    color: #FFFFFF;
+    background-color: #1D8B94;
+    border-color: rgba(0, 0, 0, .6);
+}
+
+#mainav form select {
+    color: #474747;
+    background-color: #FFFFFF;
+}
+
+#breadcrumb a {
+    color: inherit;
+    background-color: inherit;
+}
+
+#breadcrumb li:last-child a {
+    color: #53D3DE;
+}
+
+.container .sidebar nav a {
+    color: inherit;
+    border-color: #D7D7D7;
+}
+
+.container .sidebar nav a:hover {
+    color: #53D3DE;
+}
+
+.pagination a, .pagination strong {
+    border-color: #D7D7D7;
+}
+
+.pagination .current * {
+    color: #FFFFFF;
+    background-color: #53D3DE;
+}
+
+#backtotop {
+    color: #FFFFFF;
+    background-color: #53D3DE;
+}
+
+.mb-15 {
+    margin-bottom: 15px;
+}
+
+.mb-40 {
+    margin-bottom: 40px;
+}
+
+.mb-50 {
+    margin-bottom: 50px;
+}
+
+.mt-90 {
+    margin-top: 90px;
+}
+
+.mt-30 {
+    margin-top: 30px;
+}
+
+.pb-30 {
+    padding-bottom: 30px;
+}
+
+.pt-10 {
+    padding-top: 10px;
+}
+
+.pr-25 {
+    padding-right: 30px!important;
+}
+
+.product-section {
+    width: 100%;
+    background: #fff!important;
+}
+
+.text-white {
+    color: white!important;
+}
+
+.product {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%!important;
+    overflow: hidden;
+}
+
+.image {
+    width: 100%!important;
+}
+
+.shop-top-bar {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 13px 30px;
+    background-color: #53D3DE;
+}
+
+.mt-t {
+    margin-top: 2.5rem!important;
+}
+
+.product-search footer {
+    display: flex;
+}
+
+.buttonS {
+    border-radius: 0 10px 10px 0!important;
+    border: 0;
+    outline: none;
+}
+
+.buttonS i {
+    font-size: 20px!important;
+    color: #333!important;
+}
+
+/* .content {
+    border: 1px dotted #ccc;
+} */
+
+.course-price {
+    padding: 9px 20px;
+    float: left;
+    width: 100%;
+    border-top: 1px dotted #ccc;
+    border-bottom: 1px dotted #ccc;
+}
+
+.text-desc {
+    padding: 15px 20px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.category {
+    display: inline-block;
+    line-height: 15px;
+    text-transform: capitalize;
+    font-size: 13px;
+    color: #444444;
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+}
+
+.title {
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0;
+    line-height: 20px;
+    -webkit-box-flex: 1;
+    -ms-flex: 1 0 100%;
+    flex: 1 0 100%;
+}
+
+.pricee {
+    width: 100%;
+    font-size: 15px;
+    font-weight: 700;
+    color: #444444;
+    line-height: 24px;
+    float: left;
+    margin: 5px 0;
+}
+
+.rating {
+    float: right;
+    line-height: 24px;
+    margin: 5px 0;
+}
+
+.course-info {
+    padding: 14px 20px;
+}
+
+.course-info>p {
+    margin-top: 16px;
+}
+
+#remember_me {
+    display: inline-block;
+}
+
+.position-relative>label {
+    font-size: 17px !important;
+    margin-left: 10px;
+}
+
+input[type='checkbox'] {
+    -webkit-appearance: none;
+    width: 25px;
+    height: 25px;
+    background: white;
+    border-radius: 5px;
+    border: 2px solid #444;
+}
+
+input[type='checkbox']:checked {
+    background: #53D3DE;
+}
+
+#footer a {
+    color: #9FA7AF;
+}
+
+#footer a:hover {
+    color: #0056b3;
+}
+
+.panel-login {
+    border-color: #ccc;
+    -webkit-box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+}
+
+#loginReg {
+    margin-top: 45px;
+    margin-bottom: 45px;
+}
+
+.panel-login>.panel-heading {
+    color: #d083cf;
+    background-color: #fff;
+    border-color: #fff;
+    text-align: center;
+}
+
+.panel-login>.panel-heading a {
+    text-decoration: none;
+    color: #666;
+    font-weight: bold;
+    font-size: 15px;
+    -webkit-transition: all 0.1s linear;
+    -moz-transition: all 0.1s linear;
+    transition: all 0.1s linear;
+}
+
+.panel-login>.panel-heading a.active {
+    color: #00ACEE;
+    font-size: 18px;
+}
+
+.panel-login>.panel-heading hr {
+    margin-top: 10px;
+    margin-bottom: 0px;
+    clear: both;
+    border: 0;
+    height: 1px;
+    background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0));
+    background-image: -moz-linear-gradient(left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0));
+    background-image: -ms-linear-gradient(left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0));
+    background-image: -o-linear-gradient(left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0));
+}
+
+.panel-login input[type="text"], .panel-login input[type="email"], .panel-login input[type="password"] {
+    height: 45px;
+    border: 1px solid #ddd;
+    font-size: 16px;
+    -webkit-transition: all 0.1s linear;
+    -moz-transition: all 0.1s linear;
+    transition: all 0.1s linear;
+}
+
+.panel-login input:hover, .panel-login input:focus {
+    outline: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    border-color: #ccc;
+}
+
+.btn-login {
+    outline: none;
+    color: #fff!important;
+    font-size: 14px;
+    height: auto;
+    font-weight: normal;
+    padding: 14px 0;
+    text-transform: uppercase;
+}
+
+.btn-login:hover, .btn-login:focus {
+    color: #fff!important;
+    background-color: #1D8B94!important;
+    border-color: #1D8B94!important;
+}
+
+.forgot-password {
+    text-decoration: underline;
+    color: #888;
+}
+
+.forgot-password:hover, .forgot-password:focus {
+    text-decoration: underline;
+    color: #666;
+}
+
+.btn-register {
+    outline: none;
+    color: #fff!important;
+    font-size: 14px;
+    height: auto;
+    font-weight: normal;
+    padding: 14px 0;
+    text-transform: uppercase;
+}
+
+.btn-register:hover, .btn-register:focus {
+    color: #fff!important;
+    background-color: #1D8B94!important;
+    border-color: #1D8B94!important;
+}
+
+#register-form-link, #login-form-link {
+    margin-left: 20px;
+}
+
+.linkovi {
+    color: #d083cf;
+}
+
+.user-panel .info {
+    overflow: unset!important;
+}
+
+.pl-br {
+    padding-left: 0!important;
+}
+
+.product .img-fluid {
+    height: 100% !important;
+}
+
+/* ------------------------------------------------------------------------------------------------------------ */
+
+/* ------------------------------------------------------------------------------------------------------------ */
+
+/* ------------------------------------------------------------------------------------------------------------ */
+
+/* ------------------------------------------------------------------------------------------------------------ */
+
+/* ------------------------------------------------------------------------------------------------------------ */
+
+/* Media Queries
+--------------------------------------------------------------------------------------------------------------- */
+
+/* Max Wrapper Width - Laptop, Desktop etc.
+--------------------------------------------------------------------------------------------------------------- */
+
+@media screen and (min-width: 1140px) {
+    .hoc {
+        max-width: 1140px;
+    }
+}
+
+@media screen and (min-width:978px) and (max-width:1140px) {
+    .hoc {
+        max-width: 95%;
+    }
+}
+
+/* Mobile Devices
+--------------------------------------------------------------------------------------------------------------- */
+
+@media screen and (max-width:978px) {
+    .hoc {
+        max-width: 90%;
+    }
+    #header {
+        padding: 30px 0;
+    }
+    #header #logo {
+        margin-top: 0;
+    }
+    #mainav ul {
+        display: none;
+    }
+    #mainav form {
+        display: block;
+        margin-top: 8px;
+    }
+    #comments input[type="reset"] {
+        margin-top: 10px;
+    }
+    .pagination li {
+        display: inline-block;
+        margin: 0 5px 5px 0;
+    }
+    #copyright p:first-of-type {
+        margin-bottom: 10px;
+    }
+}
+
+@media screen and (max-width:750px) {
+    .imgl, .imgr {
+        display: inline-block;
+        float: none;
+        margin: 0 0 10px 0;
+    }
+    .fl_left, .fl_right {
+        display: block;
+        float: none;
+    }
+    .group .group>*:last-child, .clear .clear>*:last-child, .clear .group>*:last-child, .group .clear>*:last-child {
+        margin-bottom: 0;
+    }
+    /* Experimental - Needs more testing in different situations, stops double margin when stacking */
+    .one_half, .one_third, .two_third, .one_quarter, .two_quarter, .three_quarter {
+        display: block;
+        float: none;
+        width: auto;
+        margin: 0 0 30px 0;
+        padding: 0;
+    }
+    #header {
+        text-align: center;
+    }
+    #header #logo {
+        margin: 0 0 15px 0;
+    }
+    #pageintro article {
+        max-width: none;
+    }
+    #pageintro .heading {
+        font-size: 2rem;
+    }
+    #pageintro p:first-of-type {
+        font-size: 1rem;
+    }
+    .sectiontitle, .testimonial article {
+        max-width: none;
+    }
+    .testimonial article {
+        text-align: left;
+    }
+    .cta> :first-child {
+        margin-top: 0;
+        text-align: center;
+    }
+    .cta footer a {
+        display: inline-block;
+    }
+    .prices li:nth-last-child(-n+3) {
+        margin-bottom: 50px;
+    }
+    #latest ul li:nth-last-child(-n+3) {
+        margin-bottom: 30px;
+    }
+    #footer {
+        padding-bottom: 50px;
+    }
+    /* Not required, just looks a little better */
+}
+
+/* Other
+--------------------------------------------------------------------------------------------------------------- */
+
+@media screen and (max-width:650px) {
+    .scrollable {
+        display: block;
+        width: 100%;
+        margin: 0 0 30px 0;
+        padding: 0 0 15px 0;
+        overflow: auto;
+        overflow-x: scroll;
+    }
+    .scrollable table {
+        margin: 0;
+        padding: 0;
+        white-space: nowrap;
+    }
+    .inline li {
+        display: block;
+        margin-bottom: 10px;
+    }
+    .pushright li {
+        margin-right: 0;
+    }
+    .font-x2 {
+        font-size: 1.4rem;
+    }
+    .font-x3 {
+        font-size: 1.6rem;
+    }
+}
+
+.card-body .table th {
+    background-color: #007bff!important;
+}
+
+.table a {
+    padding: 10px;
+}
+
+.btnn {
+    background-color: none;
+}
+
+.list-group a {
+    color: #444;
+    font-size: 15px;
+}
+
+.list-group a:hover {
+    color: #007bff;
+}
+
+.small-img {
+    width: 130px;
+    height: 100px;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.contentT {
+    margin-top: 80px;
+}
+
+.price, .hours {
+    width: 100%;
+}
+
+.price {
+    font-size: 34px;
+    padding-bottom: 20px;
+}
+
+.hours {
+    font-size: 30px;
+}
+
+.titles p {
+    font-size: 23px;
+}
+
+.cat {
+    text-decoration: underline;
+}
+
+.clr {
+    font-size: 20px;
+}
+
+.clr:hover {
+    color: #53D3DE!important;
+}
+
+.actions a {
+    font-size: 20px;
+}
+
+.actions {
+    margin-bottom: 20px;
+}
+
+.actions span {
+    margin-left: 8px;
+}
+
+.add-to-cart {
+    margin-right: 40px;
+}
+
+.wish-image img {
+    max-width: 130px;
+}
+
+.table-wish a {
+    padding: 0!important;
+    font-size: 19px;
+}
+
+.wish-price span {
+    font-size: 19px;
+}
+
+.wish-name a, .wish-link a {
+    color: #000;
+}
+
+.wish-deleteBtn a {
+    color: #f76565;
+}
+
+.wish-deleteBtn a:hover {
+    color: red;
+}
+
+#table-log th {
+    font-size: 20px;
+}
+
+.one-third {
+    height: 100%!important;
+    max-width: 50%;
+}
+
+.one-third img {
+    width: 100%;
+}
+
+.cart-image img , #order-table img{
+    max-width: 130px;
+}
+
+#author_info {
+    font-size: 22px;
+}
