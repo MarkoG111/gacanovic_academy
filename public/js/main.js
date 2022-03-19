@@ -790,7 +790,6 @@ function makeTable(data) {
                 <td class='cart-price'><span>${d.price} &euro;</span></td>
                 <td>${d.total_hours}</td>
                 <td><a href='#' onclick='removeFromCart(${d.id_course})' class='removeFromCart'><i class='fas fa-times fa-2x'></i></a></td>
-                <td><a href='javascript:void(0)' id='orderCourse' class='orderCourse' data-id='${d.id_course}'><i class='fas fa-check fa-2x'></i></a></td>
             </tr>
         `
         })

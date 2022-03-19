@@ -14,17 +14,24 @@
                                 <th class="pro-price">Price</th>
                                 <th class="pro-hours">Total Hours</th>
                                 <th class="">Remove</th>
-                                <th class="">Order</th>
                             </tr>
                         </thead>
                         <tbody id="cart">
-                             
+
                         </tbody>
                         <tfoot>
 
                         </tfoot>
                     </table>
                 </form>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-10">
+                <button class="checkout-btn mt-90">
+                    <a href="{{  url('/checkout') }}" class="checkout-link">Proceed To Checkout</a>
+                </button>
             </div>
         </div>
     </div>

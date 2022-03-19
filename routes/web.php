@@ -49,6 +49,8 @@ Route::group(['middleware' => ['AuthoriseLogin']], function () {
 
     Route::post('/cart', [CartController::class, 'insertInCart']);
 
+    Route::get('/checkout', [FrontController::class, 'checkoutPage'])->middleware('RecordAccessToPage');
+
     Route::get('/orders', [FrontController::class, 'ordersPage'])->middleware('RecordAccessToPage');
 });
 

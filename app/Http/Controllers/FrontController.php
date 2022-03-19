@@ -58,6 +58,11 @@ class FrontController extends Controller
         return view('pages.user.cart', $this->data);
     }
 
+    public function checkoutPage()
+    {
+        return view('pages.user.checkout', $this->data);
+    }
+
     public function ordersPage()
     {
         $idUser = session()->get('user')->id_user;
