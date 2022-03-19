@@ -32,7 +32,6 @@ class CartController extends FrontController
     {
         $idUser = session()->get('user')->id_user;
         $idCourse = $request->input('id');
-
         if (session()->get('user')->id_role == 1) {
             return response([], 401); // admin can't add courses to cart
         }

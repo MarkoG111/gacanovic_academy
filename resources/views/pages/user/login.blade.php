@@ -56,6 +56,7 @@ Login
                             </form>
 
                             <form id="register-form" action="" method="post" style="display: none;">
+                                @csrf
 
                                 <div class="form-group">
                                     <input type="email" name="emailReg" id="emailReg" class="form-control"
@@ -99,7 +100,7 @@ Login
                                 @endif
 
                                 @if(session()->has('error'))
-                                    {{ session()->get('error') }}
+                                     {{ session()->get('error') }}
                                 @endif
                             </div>
 

@@ -57,14 +57,13 @@ Route::get('/cart/showCourses', [CartController::class, 'getCoursesForCart']);
 
 Route::group(['middleware' => ['Authorise404']], function () {
     Route::prefix('/api')->group(function () {
+        Route::get('numberOfWishes', [WishController::class, 'numberOfWishes']);
         Route::get('/wishlist', [WishController::class, 'getAllWishesForOneUser']);
         Route::post('/addWish', [WishController::class, 'addNewWish']);
         Route::delete('/deleteWish', [WishController::class, 'deleteWish']);
     });
 });
 
-// ->
-Route::get('api/numberOfWishes', [WishController::class, 'numberOfWishes']);
 
 Route::group(['middleware' => ['Admin']], function () {
     Route::prefix('/admin')->group(function () {

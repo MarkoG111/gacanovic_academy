@@ -35,7 +35,7 @@
             <h6 class="three_quarter first subscribeTitle">SUBSCRIBE OUR NEWSLETTER</h6>
             <footer class="one_quarter">
                 <form class="example" action="">
-                    <input type="text" placeholder="Enter Your Email" aria-label="true" name="search">
+                    <input class="enterEmailPlaceholder" type="text" placeholder="Enter Your Email" aria-label="true" name="search">
                     <button type="submit">SUB</button>
                 </form>
             </footer>

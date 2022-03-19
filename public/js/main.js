@@ -1,4 +1,5 @@
-const baseURL = 'http://localhost:8000/'
+//const baseURL = 'http://localhost:8000/' // doesn't work for 127.0.0.1
+const baseURL = 'http://127.0.0.1:8000/'
 
 const regExpLoginRegister = new RegExp(`^${baseURL}login[\#]?$`)
 const regExpWishlist = new RegExp(`^${baseURL}wishlist[\#]?$`)
@@ -22,7 +23,7 @@ $.ajaxSetup({
 
 $(document).ready(function () {
     showCart()
-    numberOfWishes()
+    //numberOfWishes()
 
     $(document).on('click', '.js-pagination', function (e) {
         e.preventDefault()
@@ -227,6 +228,7 @@ $(document).ready(function () {
     }
 
     if (regExpLoginRegister.test(window.location.href)) {
+        console.log("active")
         $('#login-form-link').click(function (e) {
             e.preventDefault()
 
@@ -239,9 +241,11 @@ $(document).ready(function () {
         })
 
         $('#register-form-link').click(function (e) {
+            console.log(22)
             e.preventDefault()
 
             $('#register-form').delay(100).fadeIn(100)
+
 
             $('#login-form').fadeOut(100)
             $('#login-form-link').removeClass('active')

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 13, 2021 at 08:24 PM
+-- Generation Time: Dec 30, 2021 at 12:59 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.2
 
@@ -48,7 +48,9 @@ INSERT INTO `cart` (`id_cart`, `id_user`, `id_course`, `order_date`) VALUES
 (6, 3, 12, '2021-03-12 22:12:13'),
 (7, 3, 12, '2021-03-12 22:12:50'),
 (8, 4, 8, '2021-03-12 22:25:37'),
-(11, 5, 12, '2021-03-13 16:55:43');
+(11, 5, 12, '2021-03-13 16:55:43'),
+(12, 4, 10, '2021-10-29 18:45:54'),
+(13, 4, 1, '2021-12-29 21:53:42');
 
 -- --------------------------------------------------------
 
@@ -95,7 +97,8 @@ INSERT INTO `contact_mail` (`id_contact_mail`, `subject`, `email`, `message`, `d
 (1, 'Prvi naslov', 'pjer@gmail.com', 'pozzz', '2021-02-06 21:17:15'),
 (2, 'Proba kontakt forme', 'gacanoviccc97@gmail.com', 'Pozdrav tamo!', '2021-03-02 10:23:46'),
 (3, 'Testic', 'gacanoviccc97@gmail.com', 'Testiranje 22', '2021-03-08 12:10:42'),
-(4, 'Proba kontakt forme', 'gacanoviccc97@gmail.com', 'Probaaaa', '2021-03-09 16:07:26');
+(4, 'Proba kontakt forme', 'gacanoviccc97@gmail.com', 'Probaaaa', '2021-03-09 16:07:26'),
+(6, 'Nebitno', 'jova@gmail.com', 'Moja porulaaaa', '2021-10-29 19:07:06');
 
 -- --------------------------------------------------------
 
@@ -239,11 +242,12 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id_user`, `username`, `email`, `password`, `active`, `id_role`, `created_at`, `updated_at`, `last_login`, `last_logout`) VALUES
-(1, 'gacho97', 'gacanovic@gmail.com', 'd0d85110a4e437cdf888d49cb4e20af2', 0, 1, '2021-03-12 17:26:30', '2021-03-12 17:26:30', '2021-03-13 15:56:12', '2021-03-13 15:57:20'),
+(1, 'gacho97', 'gacanovic@gmail.com', 'd0d85110a4e437cdf888d49cb4e20af2', 0, 1, '2021-03-12 17:26:30', '2021-03-12 17:26:30', '2021-10-29 16:24:34', '2021-10-29 16:29:57'),
 (2, 'viktor98', 'viktor@gmail.com', 'fc1a79950f1490827c134a9450773478', 0, 2, '2021-03-12 19:14:40', '2021-03-12 19:14:40', '2021-03-13 15:21:23', '2021-03-13 15:21:38'),
 (3, 'mirjana333', 'mirjana@gmail.com', '3f9fb0c0be57d4669027d8bf5c96b21b', 0, 2, '2021-03-12 19:28:38', '2021-03-12 19:28:38', '2021-03-12 21:11:06', '2021-03-12 21:13:12'),
-(4, 'bojan65', 'bojan@gmail.com', 'c28d5e4f3af2be389094098a2e10d704', 0, 2, '2021-03-12 22:15:31', '2021-03-12 22:15:31', '2021-03-12 21:16:02', '2021-03-12 21:31:11'),
-(5, 'teletabis001', 'teletabis@yahoo.com', 'f143d4f5d4c1b2f23914a535aeaa18e1', 0, 2, '2021-03-13 16:29:54', '2021-03-13 16:29:54', '2021-03-13 15:57:41', '2021-03-13 15:58:15');
+(4, 'bojan65', 'bojan@gmail.com', 'c28d5e4f3af2be389094098a2e10d704', 0, 2, '2021-03-12 22:15:31', '2021-03-12 22:15:31', '2021-12-29 20:52:36', '2021-12-29 20:53:55'),
+(5, 'teletabis001', 'teletabis@yahoo.com', 'f143d4f5d4c1b2f23914a535aeaa18e1', 0, 2, '2021-03-13 16:29:54', '2021-03-13 16:29:54', '2021-03-13 15:57:41', '2021-03-13 15:58:15'),
+(6, 'tester29', 'test29@gmail.com', 'f0cb60e4dfbba5674340ba95d21c3f04', 0, 2, '2021-12-29 21:06:26', '2021-12-29 21:06:26', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -339,7 +343,7 @@ ALTER TABLE `wish`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id_cart` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_cart` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `category`
@@ -351,7 +355,7 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT for table `contact_mail`
 --
 ALTER TABLE `contact_mail`
-  MODIFY `id_contact_mail` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_contact_mail` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `course`
@@ -381,13 +385,13 @@ ALTER TABLE `topic`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `wish`
 --
 ALTER TABLE `wish`
-  MODIFY `id_wish` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_wish` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Constraints for dumped tables

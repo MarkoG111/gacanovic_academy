@@ -7,7 +7,7 @@ if (window.location.href.indexOf('contact') != -1) {
         document.querySelector("#email").value = ""
         document.querySelector("#message").value = ""
     })
-}
+
 
 function contact() {
     var email = document.querySelector("#email").value
@@ -101,4 +101,5 @@ function contact() {
     } else {
         console.log('Error')
     }
+}
 }

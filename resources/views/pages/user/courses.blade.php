@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-    <section class="product-section section mt-90 mb-40">
+    <section class="product-section section mt-30 mb-40">
         <div class="container">
             <form action="{{ route('courses') }}" method="GET">
                 @csrf
@@ -13,7 +13,7 @@
                     <div class="col-xl-9 col-lg-8 col-12 mb-50 order-lg-2 ">
                         <div class="row mb-50 pl-br">
                             <div class="col pl-br">
-                                <div class="shop-top-bar with-sidebar">
+                                <div class="shop-top-bar with-sidebar ">
                                     <div class="product-sort">
                                         <p>Sort by:</p>
                                         <select name="sort" class="form-control">
@@ -28,7 +28,7 @@
                                             @endforeach
                                         </select>
                                     </div>
-                                    <div class="product-search mt-t align-self-center">
+                                    <div class="product-search mt-t">
                                         <footer>
                                             <form class="example" action="">
                                                 <input type="text" placeholder="Search For Courses" aria-label="true"
@@ -40,7 +40,7 @@
                                     <div class="product-showing">
                                         <p>Showing:</p>
                                         <select name="showing" id="showing" class="form-control">
-                                            @php $show = [ ['value' => '6',], ['value' => '9',],['value' => '12',],['value' => '15'] ] @endphp
+                                            @php $show = [ ['value' => '4'], ['value' => '6',], ['value' => '9',],['value' => '12',],['value' => '15'] ] @endphp
                                             @foreach ($show as $s)
                                                 @if ($s['value'] == $showing)
                                                     <option selected value="{{ $s['value'] }}">{{ $s['value'] }}
@@ -52,7 +52,7 @@
                                         </select>
 
                                     </div>
-                                    <p class="align-self-center">Pages: {{ $courses->currentPage() }} of
+                                    <p>Pages: {{ $courses->currentPage() }} of
                                         {{ $courses->lastPage() }}</p>
                                 </div>
                             </div>
@@ -77,8 +77,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="shop-sidebar-wrap col-xl-3 col-lg-4 col-12 mb-15 order-lg-1">
-                        <div class="shop-sidebar mb-40">
+
+                    <div class="shop-sidebar-wrap col-xl-3 col-lg-4 col-12 order-lg-1">
+                        <div class="shop-sidebar">
                             <h4 class="text-center pb-5 pt-2">TOPIC</h4>
                             @foreach ($topics as $topic)
                                 <div class="col-12 mb-15 position-relative">
@@ -95,8 +96,8 @@
                             @endforeach
                         </div>
 
-                        <div class="shop-sidebar mb-40">
-                            <h4 class="text-center pb-5 pt-2">CATEGORY</h4>
+                        <div class="shop-sidebar">
+                            <h4 class="text-center pb-5 pt-5">CATEGORY</h4>
                             @foreach ($categories as $c)
                                 <div class="col-12 mb-15 position-relative">
                                     @if (in_array($c->id_category, $categoriesChb ?? []))

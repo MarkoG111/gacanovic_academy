@@ -5,7 +5,7 @@
 {{-- <script src="{{ asset('js/plugins.js') }}"></script> --}}
 <script src="{{ asset('js/jquery.min.js') }}"></script>
 <script src="{{ asset('js/jquery.mobilemenu.js') }}"></script>
-<script src="{{ asset('js/contact.js') }}"></script>
+
 <script src="{{ asset('js/main.js') }}"></script>
 
 </body>
