@@ -1,10 +1,14 @@
 @extends('layout.user')
 
 @section('title')
-
 @endsection
 
 @section('content')
+    @foreach ($myLearnings as $learning)
+        <?php
+        $ids_learning_courses[] = $learning->id_course;
+        ?>
+    @endforeach
     <section class="content">
         <div class="row">
             <div class="col-md-6 col-12 text-center mx-auto my-5">
@@ -29,10 +33,24 @@
                             @if (session()->get('user')->id_user == 1)
                                 <h4 class="text-warning">You must be logged in as User if You want to buy course.</h4>
                             @else
-                                <a href="#" class="add-to-cart" data-idcourse="{{ $course->id_course }}"><i
-                                        class="fas fa-shopping-cart fa-2x clr "></i><span>Add To Cart</span></a>
-                                <a href="#" class="wishhhh" data-idcourse="{{ $course->id_course }}"><i
-                                        class="fas fa-heart fa-2x clr "></i><span>Add To Whishlist</span></a>
+                                @if (isset($ids_learning_courses))
+                                    @if (in_array($course->id_course, $ids_learning_courses))
+                                        <h4>You already bought this course.</h4>
+                                    @else
+                                        <a href="javascript:void(0)" class="add-course-to-cart"
+                                            data-idcourse="{{ $course->id_course }}"><i
+                                                class="fas fa-shopping-cart fa-2x clr "></i><span>Add To Cart</span></a>
+                                        <a href="javascript:void(0)" class="wishhhh"
+                                            data-idcourse="{{ $course->id_course }}"><i
+                                                class="fas fa-heart fa-2x clr "></i><span>Add To Whishlist</span></a>
+                                    @endif
+                                @else
+                                    <a href="javascript:void(0)" class="add-course-to-cart"
+                                        data-idcourse="{{ $course->id_course }}"><i
+                                            class="fas fa-shopping-cart fa-2x clr "></i><span>Add To Cart</span></a>
+                                    <a href="javascript:void(0)" class="wishhhh" data-idcourse="{{ $course->id_course }}"><i
+                                            class="fas fa-heart fa-2x clr "></i><span>Add To Whishlist</span></a>
+                                @endif
                             @endif
                         @else
                             <h4 class="text-warning">You must be logged in if You want to buy course.</h4>

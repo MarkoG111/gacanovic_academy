@@ -11,12 +11,13 @@ use App\Http\Services\ImageHelper;
 use App\Http\Services\Logs;
 
 use App\Models\Category;
+use App\Models\CourseOrder;
 use App\Models\CourseTopic;
+use App\Models\Lesson;
 use App\Models\Topic;
 use App\Models\Course;
 
 use Illuminate\Http\Request;
-
 use Illuminate\Support\Facades\DB;
 
 use PDOException;
@@ -27,6 +28,8 @@ class CourseController
     private $topics;
     private $courses;
     private $courseTopics;
+    private $lessons;
+    private $courseOrder;
 
     public function __construct()
     {
@@ -34,6 +37,8 @@ class CourseController
         $this->topics = new Topic();
         $this->courses = new Course();
         $this->courseTopics = new CourseTopic();
+        $this->lessons = new Lesson();
+        $this->courseOrder = new CourseOrder();
     }
     /**
      * Display a listing of the resource.
@@ -52,7 +57,7 @@ class CourseController
      */
     public function create()
     {
-        return view('pages.admin.courses', ['categories' => $this->categories->getAllCateogries(), 'topics' => $this->topics->getAllTopics()]);
+        return view('pages.admin.courses', ['categories' => $this->categories->getAllCateogries(), 'topics' => $this->topics->getAllTopics(), 'lessons' => $this->lessons->getAllLessons()]);
     }
 
     /**
@@ -64,6 +69,7 @@ class CourseController
     public function store(Request $request, AddCourseRequest $addCourseRequest)
     {
         $courseName = $request->input('courseName');
+        $description = $request->input('description');
         $price = $request->input('coursePrice');
         $totalHours = $request->input('courseHours');
 
@@ -74,7 +80,16 @@ class CourseController
 
         DB::beginTransaction();
         try {
-            $idCourse = $this->courses->insertCourse($courseName, $price, $totalHours, $imageBig[0], $imageBig[1], $idCategory);
+            $idCourse = $this->courses->insertCourse($courseName, $description, $price, $totalHours, $imageBig[0], $imageBig[1], $idCategory);
+
+            if (is_array($request->input('lesson'))) {
+                foreach ($request->input('lesson') as $lesson) {
+                    $this->lessons->insertCourseLesson($lesson, $idCourse);
+                }
+            } else {
+                $this->lessons->insertCourseLesson($request->input('lesson'), $idCourse);
+            }
+
 
             foreach ($request->input('topicsChb') as $topic) {
                 $this->courseTopics->insertCourseTopic($idCourse, $topic);
@@ -112,6 +127,7 @@ class CourseController
     {
         $this->data['categories'] = $this->categories->getAllCateogries();
         $this->data['topics'] = $this->topics->getAllTopics();
+        $this->data['lessonsEdit'] = $this->lessons->getAllLessonsForCourse($id);
         $this->data['course'] = $this->courses->getSingleCourse($id);
         return view('pages.admin.courses_edit', $this->data);
     }
@@ -126,6 +142,7 @@ class CourseController
     public function update(UpdateCourseRequest $request, $id)
     {
         $courseName = $request->input('courseName');
+        $description = $request->input('description');
         $price = $request->input('coursePrice');
         $totalHours = $request->input('courseHours');
         $idCategory = $request->input('category');
@@ -137,7 +154,7 @@ class CourseController
             $newImage = ImageHelper::insertImage($image);
             try {
                 $this->courseTopics->deleteCourse($id);
-                $this->courses->updateCourseWithImage($id, $courseName, $price, $totalHours, $newImage[0], $newImage[1], $idCategory, $updatedAt);
+                $this->courses->updateCourseWithImage($id, $courseName, $description, $price, $totalHours, $newImage[0], $newImage[1], $idCategory, $updatedAt);
 
                 foreach ($request->input('topicsChb') as $topic) {
                     $this->courseTopics->insertCourseTopic($id, $topic);
@@ -155,7 +172,19 @@ class CourseController
         } else {
             try {
                 $this->courseTopics->deleteCourse($id);
-                $this->courses->updateCourseWithoutImage($id, $courseName, $price, $totalHours, $idCategory, $updatedAt);
+                $this->courses->updateCourseWithoutImage($id, $courseName, $description, $price, $totalHours, $idCategory, $updatedAt);
+
+                // delete lessons of course
+                $this->lessons->deleteCourseLesson($id);
+
+                // insert lessons of course
+                if (is_array($request->input('lesson'))) {
+                    foreach ($request->input('lesson') as $lesson) {
+                        $this->lessons->insertCourseLesson($lesson, $id);
+                    }
+                } else {
+                    $this->lessons->insertCourseLesson($request->input('lesson'), $id);
+                }
 
                 foreach ($request->input('topicsChb') as $topic) {
                     $this->courseTopics->insertCourseTopic($id, $topic);
@@ -164,6 +193,7 @@ class CourseController
                 DB::commit();
 
                 Logs::loggingSuccess('Admin just updated a course.');
+
                 return redirect()->route('courses.edit', ['course' => $id])->with('success', 'Course has been updated.');
             } catch (PDOException $ex) {
                 DB::rollBack();
@@ -179,11 +209,13 @@ class CourseController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
         DB::beginTransaction();
         try {
             $this->courseTopics->deleteCourse($id);
+            $this->lessons->deleteCourseLesson($id);
+            $this->courseOrder->deleteCourseFromOrder($id);
             $this->courses->deleteCourse($id);
 
             DB::commit();

@@ -29,9 +29,16 @@
 
         <div class="row">
             <div class="col-10">
-                <button class="checkout-btn mt-90">
+                {{-- <button class="checkout-btn mt-90">
                     <a href="{{  url('/checkout') }}" class="checkout-link">Proceed To Checkout</a>
-                </button>
+                </button> --}}
+                <form action="{{ route('checkout') }}" method="POST">
+                    @csrf
+
+                    <input type="hidden" name="cartItems" id="cartItems">
+
+                    <button class="checkout-btn mt-90">Checkout</button>
+                </form>
             </div>
         </div>
     </div>

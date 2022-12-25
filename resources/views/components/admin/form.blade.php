@@ -38,12 +38,64 @@
                                     <img src="{{ asset("/img/".$input['folder'] . $input['image'] ?? '') }}" alt="{{ $input['name'] ?? '' }}" class="small-img" />
                                 @endif
 
-                                <input type="{{ $input['type'] ?? 'text' }}" class="form-control"
-                                    id="{{ $input['id'] ?? '' }}" value="{{ $input['value'] ?? '' }}"
-                                    name="{{ $input['name'] ?? '' }}"
-                                    placeholder="{{ $input['placeholder'] ?? '' }}" />
+                                @if (($input['type']) == 'textarea')
+                                    <textarea name="{{ $input['name'] }}" value="" placeholder="" class="form-control" cols="25" rows="10">{{ $input['value'] ?? '' }} </textarea>
+                                @endif
 
+                                @if (($input['type']) !== 'textarea')
+                                    <input type="{{ $input['type'] ?? 'text' }}" class="form-control"
+                                        id="{{ $input['id'] ?? '' }}" value="{{ $input['value'] ?? '' }}"
+                                        name="{{ $input['name'] ?? '' }}"
+                                        placeholder="{{ $input['placeholder'] ?? '' }}" />
+                                @endif
                             </div>
+                        @endforeach
+                    @endif
+
+
+                    @if (isset($arrayLessons))
+                        @foreach ($arrayLessons as $lesson)
+                            <div class="form-group lessonRow row" id="lesson">
+                                <div class="col-11">
+                                    <label>{{ $lesson->label ?? '' }}</label>
+
+                                    <input type="{{ $lesson->type ?? 'text' }}" class="form-control mb-8"
+                                    id="{{ $lesson->value ?? '' }}" value="{{ $lesson->text ?? '' }}"
+                                    name="{{ $lesson->name ?? '' }}"
+                                    placeholder="{{ $lesson->placeholder ?? '' }}" />
+                                </div>
+                            </div>
+
+                            <div class="center-align centeredBtn">
+                                <button type="button" class="btn blue" id="btnAddLesson"><i class="fa fa-plus"></i></button>
+                            </div>
+                        @endforeach
+                    @endif
+
+                    @if (isset($arrayLessonsEdit))
+                        @foreach ($arrayLessonsEdit as $arl)
+                        <label>{{ $arl->label ?? '' }}</label>
+
+                            @if (isset($arl->option))
+                                @foreach ($arl->option as $option)
+                                    <div class="form-group lessonRow row" id="{{ $option['value'] }}">
+                                        <div class="col-11">
+                                            <input type="text" class="form-control mb-8"
+                                            id="{{ $option['value'] ?? '' }}"
+                                            value="{{ $option['text'] ?? '' }}"
+                                            name="{{ $arl->name ?? '' }}" />
+                                        </div>
+
+                                        <div class="col-1">
+                                            <button type="button" class="btn btnRemoveLessonFromEdit" data-id='{{ $option['value'] }}'><i class="fa fa-times"></i></button>
+                                        </div>
+                                    </div>
+                                @endforeach
+
+                                <div class="center-align centeredBtn">
+                                    <button type="button" class="btn blue" id="btnAddLesson"><i class="fa fa-plus"></i></button>
+                                </div>
+                            @endif
                         @endforeach
                     @endif
 
@@ -73,7 +125,7 @@
                                         @endif
 
                                     @endforeach
-                                    
+
                                 </select>
 
                             </div>

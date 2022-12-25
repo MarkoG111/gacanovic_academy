@@ -47,14 +47,4 @@ class Wish extends Model
     {
         DB::table('wish')->where(['id_wish' => $idWish])->delete();
     }
-
-    public function deleteWishWithCourse($idCourse)
-    {
-        DB::table('wish')->where(['id_course' => $idCourse])->delete();
-    }
-
-    public function deleteWishWithUser($idUser)
-    {
-        DB::table('wish')->where(['id_user' => $idUser])->delete();
-    }
 }

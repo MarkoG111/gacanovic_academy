@@ -3,7 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-
+use Illuminate\Support\Facades\Validator;
 class AddCourseRequest extends FormRequest
 {
     /**
@@ -25,10 +25,12 @@ class AddCourseRequest extends FormRequest
     {
         return [
             'courseName' => 'required|string',
+            'description' => 'required|string',
             'coursePrice' => 'required|min:1|numeric',
             'courseHours' => 'required|min:1|numeric',
             'courseImage' => 'required|image|mimes:png,jpg,jpeg,gif,svg|max:2048',
             'category' => 'exists:category,id_category',
+            'lesson' => 'required',
             'topicsChb' => 'required|array'
         ];
     }
@@ -37,6 +39,7 @@ class AddCourseRequest extends FormRequest
     {
         return [
             'courseName.required' => 'Course name is required.',
+            'description.required' => 'Description is required.',
             'coursePrice.required' => 'Price is required.',
             'coursePrice.numeric' => 'Price must be integer',
             'courseHours.required' => 'Total Hours is required.',
@@ -44,6 +47,7 @@ class AddCourseRequest extends FormRequest
             'courseImage.required' => 'Image is required.',
             'courseImage.image' => 'File must be image format.',
             'courseImage.max' => 'Image size is 8000kb maximum.',
+            'lesson.required' => 'Lesson is required.',
             'category.exists' => 'You must choose category.',
             'topicsChb.required' => 'You must choose topic.',
         ];

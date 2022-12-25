@@ -18,8 +18,7 @@
                             <div class="image-cat">
                                 <img src="{{ asset("img/categories/" . $c->category_image) }}" alt="{{ $c->category_name }}" />
                             </div>
-                            <h6 class="heading"><a
-                                    href="{{ route('courses', ['categories[]' => $c->id_category]) }}">{{ $c->category_name }}</a>
+                            <h6 class="heading"><a href="{{ route('courses', ['categories[]' => $c->id_category]) }}">{{ $c->category_name }}</a>
                             </h6>
                             <p>From: <sup></sup><strong><?= rand(20, 80) ?></strong><em>&euro;</em></p>
                         </article>

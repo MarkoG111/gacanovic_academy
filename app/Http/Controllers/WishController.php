@@ -29,7 +29,7 @@ class WishController extends Controller
         try {
             $ifExists = $this->modelWish->checkIfAlereadyExists($idUser, $idCourse);
             if ($ifExists) {
-                return response('Course is already in your wishlist', 200);
+                return response('Course is already in your wishlist', 400);
             }
 
             $this->modelWish->addWish($idUser, $idCourse);

@@ -10,7 +10,9 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\FrontController;
+use App\Http\Controllers\LessonController;
 use App\Http\Controllers\WishController;
+use App\Http\Controllers\CheckoutController;
 
 use Illuminate\Support\Facades\Route;
 use Rap2hpoutre\LaravelLogViewer\LogViewerController;
@@ -42,19 +44,23 @@ Route::post('/contact', [ContactController::class, 'store']);
 
 Route::get('/author', [FrontController::class, 'authorPage'])->name('author')->middleware('RecordAccessToPage');
 
+Route::post('/webhook', [CheckoutController::class, 'webhook'])->name('checkout.webhook');
+
 Route::group(['middleware' => ['AuthoriseLogin']], function () {
     Route::get('/wishlist', [FrontController::class, 'wishesPage'])->middleware('RecordAccessToPage');
 
     Route::get('/cart', [FrontController::class, 'cartPage'])->middleware('RecordAccessToPage');
 
-    Route::post('/cart', [CartController::class, 'insertInCart']);
-
     Route::get('/checkout', [FrontController::class, 'checkoutPage'])->middleware('RecordAccessToPage');
+    Route::post('/checkout', [CheckoutController::class, 'checkout'])->middleware('RecordAccessToPage')->name('checkout');
+    Route::get('/success', [CheckoutController::class, 'success'])->middleware('RecordAccessToPage')->name('checkout.success');
+    Route::get('/cancel', [CheckoutController::class, 'cancel'])->middleware('RecordAccessToPage')->name('checkout.cancel');
 
-    Route::get('/orders', [FrontController::class, 'ordersPage'])->middleware('RecordAccessToPage');
+    Route::get('/learnings', [FrontController::class, 'learningsPage'])->middleware('RecordAccessToPage');
 });
 
 // ->
+Route::get('/orders', [FrontController::class, 'ordersPage'])->middleware('RecordAccessToPage');
 Route::get('/cart/showCourses', [CartController::class, 'getCoursesForCart']);
 
 Route::group(['middleware' => ['Authorise404']], function () {
@@ -72,6 +78,7 @@ Route::group(['middleware' => ['Admin']], function () {
         Route::resources([
             '/courses' => CourseController::class,
             '/categories' => CategoryController::class,
+            '/lesson' => LessonController::class,
             '/topics' => TopicController::class,
             '/users' => UserController::class,
             '/contact' => AdminContactController::class,

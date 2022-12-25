@@ -15,13 +15,19 @@ File: Layout CSS
     border-bottom: 2px solid;
 }
 
-body, html {
+body,
+html {
     font-family: 'Lato', sans-serif;
+}
+
+a {
+    text-decoration: none !important;
 }
 
 .fl_left .nospace {
     text-align: center;
 }
+
 .fl_left .nospace li a {
     text-align: center;
 }
@@ -36,7 +42,7 @@ body, html {
 
 #topbar ul li {
     display: inline-block;
-    margin-right: 15px;
+    /* margin-right: 15px; */
 }
 
 #topbar ul li:last-child {
@@ -229,13 +235,16 @@ body[data-theme="dark"] {
     color: #ffffff;
 }
 
-[data-theme="dark"] a.list-group-item:focus, [data-theme="dark"] a.list-group-item:hover {
+[data-theme="dark"] a.list-group-item:focus,
+[data-theme="dark"] a.list-group-item:hover {
     background-color: #273a4e;
     border-color: rgba(255, 255, 255, 0.125);
     color: #ffffff;
 }
 
-[data-theme="dark"] .table td, [data-theme="dark"] .table th, [data-theme="dark"] .table thead th {
+[data-theme="dark"] .table td,
+[data-theme="dark"] .table th,
+[data-theme="dark"] .table thead th {
     border-color: #616161;
 }
 
@@ -275,7 +284,7 @@ body[data-theme="dark"] {
 }
 
 .page-link {
-    padding: 12px 16px!important;
+    padding: 12px 16px !important;
     font-size: 14px;
     font-weight: bold;
 }
@@ -539,16 +548,19 @@ form.example::after {
     border: none;
 }
 
-#footer .linklist li::before, #footer .linklist li::after {
+#footer .linklist li::before,
+#footer .linklist li::after {
     display: table;
     content: "";
 }
 
-#footer .linklist li, #footer .linklist li::after {
+#footer .linklist li,
+#footer .linklist li::after {
     clear: both;
 }
 
-#footer input, #footer button {
+#footer input,
+#footer button {
     border: 1px solid;
 }
 
@@ -583,7 +595,9 @@ If you don't want it to fade all elements, you have to list the ones you want to
 Delete it completely to stop fading
 --------------------------------------------------------------------------------------------------------------- */
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
     transition: all .3s ease-in-out;
 }
 
@@ -604,17 +618,23 @@ Delete it completely to stop fading
 /* Navigation
 --------------------------------------------------------------------------------------------------------------- */
 
-nav ul, nav ol {
+nav ul,
+nav ol {
     margin: 0;
     padding: 0;
     list-style: none;
 }
 
-#mainav, #breadcrumb, .sidebar nav {
+#mainav,
+#breadcrumb,
+.sidebar nav {
     line-height: normal;
 }
 
-#mainav .drop::after, #mainav li li .drop::after, #breadcrumb li a::after, .sidebar nav a::after {
+#mainav .drop::after,
+#mainav li li .drop::after,
+#breadcrumb li a::after,
+.sidebar nav a::after {
     position: absolute;
     font-family: "Font Awesome\ 5 Free";
     font-weight: 900;
@@ -676,13 +696,15 @@ nav ul, nav ol {
     padding-left: 20px;
 }
 
-#mainav li li a, #mainav li li .drop {
+#mainav li li a,
+#mainav li li .drop {
     display: block;
     margin: 0;
     padding: 10px 15px;
 }
 
-#mainav .drop::after, #mainav li li .drop::after {
+#mainav .drop::after,
+#mainav li li .drop::after {
     content: "\f0d7";
 }
 
@@ -713,7 +735,8 @@ nav ul, nav ol {
     padding: 0;
 }
 
-#mainav form select, #mainav form select option {
+#mainav form select,
+#mainav form select option {
     display: block;
     cursor: pointer;
     outline: none;
@@ -819,7 +842,8 @@ nav ul, nav ol {
     width: 100%;
 }
 
-#comments input, #comments textarea {
+#comments input,
+#comments textarea {
     width: 100%;
     padding: 10px;
     border: 1px solid;
@@ -833,7 +857,8 @@ nav ul, nav ol {
     margin-bottom: 15px;
 }
 
-#comments input[type="submit"], #comments input[type="reset"] {
+#comments input[type="submit"],
+#comments input[type="reset"] {
     display: inline-block;
     width: auto;
     min-width: 150px;
@@ -844,11 +869,18 @@ nav ul, nav ol {
 
 /* Tables + Comments */
 
-table, th, td, #comments .avatar, #comments input, #comments textarea {
+table,
+th,
+td,
+#comments .avatar,
+#comments input,
+#comments textarea {
     border-color: #D7D7D7;
 }
 
-#comments input:focus, #comments textarea:focus, #comments *:required:focus {
+#comments input:focus,
+#comments textarea:focus,
+#comments *:required:focus {
     border-color: #53D3DE;
 }
 
@@ -857,17 +889,22 @@ th {
     background-color: #373737;
 }
 
-tr, #comments li, #comments input[type="submit"], #comments input[type="reset"] {
+tr,
+#comments li,
+#comments input[type="submit"],
+#comments input[type="reset"] {
     color: inherit;
     background-color: #FBFBFB;
 }
 
-tr:nth-child(even), #comments li:nth-child(even) {
+tr:nth-child(even),
+#comments li:nth-child(even) {
     color: inherit;
     background-color: #F7F7F7;
 }
 
-table a, #comments a {
+table a,
+#comments a {
     background-color: inherit;
 }
 
@@ -984,13 +1021,15 @@ a {
     color: #53D3DE;
 }
 
-a:active, a:focus {
+a:active,
+a:focus {
     background: transparent;
 }
 
 /* IE10 + 11 Bugfix - prevents grey background */
 
-hr, .borderedbox {
+hr,
+.borderedbox {
     border-color: #D7D7D7;
 }
 
@@ -999,7 +1038,9 @@ label span {
     background-color: inherit;
 }
 
-input:focus, textarea:focus, *:required:focus {
+input:focus,
+textarea:focus,
+*:required:focus {
     border-color: #53D3DE;
 }
 
@@ -1025,14 +1066,16 @@ input:focus, textarea:focus, *:required:focus {
     background-color: rgba(255, 255, 255, .7);
 }
 
-.authBtn, .authBtn.inverse:hover {
-    color: #444!important;
-    background-color: #53D3DE!important;
-    border-color: #53D3DE!important;
+.authBtn,
+.authBtn.inverse:hover {
+    color: #444 !important;
+    background-color: #53D3DE !important;
+    border-color: #53D3DE !important;
 }
 
-.authBtn:hover, .authBtn.inverse {
-    color: #444!important;
+.authBtn:hover,
+.authBtn.inverse {
+    color: #444 !important;
     background-color: transparent;
     border-color: inherit;
 }
@@ -1065,7 +1108,8 @@ input:focus, textarea:focus, *:required:focus {
     background-color: #202020;
 }
 
-.row5, .row5 a {
+.row5,
+.row5 a {
     color: #9FA7AF;
     background-color: #161616;
 }
@@ -1081,6 +1125,10 @@ input:focus, textarea:focus, *:required:focus {
     color: inherit;
 }
 
+#header #logo h1 a:hover {
+    color: rgb(236, 233, 233);
+}
+
 /* Page Intro */
 
 #pageintro {
@@ -1094,10 +1142,12 @@ input:focus, textarea:focus, *:required:focus {
     border-color: rgba(0, 0, 0, .1);
 }
 
-.prices li article:hover, .prices li article:hover .btn, .prices .btn:hover {
-    color: #444!important;
-    background-color: #FFFFFF!important;
-    border-color: #53D3DE!important;
+.prices li article:hover,
+.prices li article:hover .btn,
+.prices .btn:hover {
+    color: #444 !important;
+    background-color: #FFFFFF !important;
+    border-color: #53D3DE !important;
 }
 
 .prices li article p:last-of-type strong {
@@ -1117,11 +1167,11 @@ input:focus, textarea:focus, *:required:focus {
 }
 
 footer .btn {
-    color: #fff!important;
+    color: #fff !important;
 }
 
 footer .btn:hover {
-    color: #444!important;
+    color: #444 !important;
 }
 
 /* CTA - Click to Action */
@@ -1136,11 +1186,14 @@ footer .btn:hover {
     color: #FFFFFF;
 }
 
-#footer hr, #footer .borderedbox, #footer .linklist li {
+#footer hr,
+#footer .borderedbox,
+#footer .linklist li {
     border-color: rgba(255, 255, 255, .1);
 }
 
-#footer input, #footer button {
+#footer input,
+#footer button {
     border-color: transparent;
 }
 
@@ -1165,20 +1218,24 @@ footer .btn:hover {
     border-color: transparent;
 }
 
-#mainav .active a, #mainav a:hover, #mainav li:hover>a {
+#mainav .active a,
+#mainav a:hover,
+#mainav li:hover>a {
     color: #FFFFFF;
     background-color: #1D8B94;
     border-color: #FFFFFF;
 }
 
-#mainav li li a, #mainav .active li a {
+#mainav li li a,
+#mainav .active li a {
     color: #FFFFFF;
     background-color: rgba(83, 211, 222, .5);
     /* #53D3DE */
     border-color: rgba(0, 0, 0, .6);
 }
 
-#mainav li li:hover>a, #mainav .active .active>a {
+#mainav li li:hover>a,
+#mainav .active .active>a {
     color: #FFFFFF;
     background-color: #1D8B94;
     border-color: rgba(0, 0, 0, .6);
@@ -1207,7 +1264,8 @@ footer .btn:hover {
     color: #53D3DE;
 }
 
-.pagination a, .pagination strong {
+.pagination a,
+.pagination strong {
     border-color: #D7D7D7;
 }
 
@@ -1250,28 +1308,28 @@ footer .btn:hover {
 }
 
 .pr-25 {
-    padding-right: 30px!important;
+    padding-right: 30px !important;
 }
 
 .product-section {
     width: 100%;
-    background: #fff!important;
+    background: #fff !important;
 }
 
 .text-white {
-    color: white!important;
+    color: white !important;
 }
 
 .product {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 100%!important;
+    height: 100% !important;
     overflow: hidden;
 }
 
 .image {
-    width: 100%!important;
+    width: 100% !important;
 }
 
 .shop-top-bar {
@@ -1283,7 +1341,7 @@ footer .btn:hover {
 }
 
 .mt-t {
-    margin-top: 2.5rem!important;
+    margin-top: 2.5rem !important;
 }
 
 .product-search footer {
@@ -1291,14 +1349,15 @@ footer .btn:hover {
 }
 
 .buttonS {
-    border-radius: 0 10px 10px 0!important;
+    border-radius: 6px !important;
     border: 0;
+    padding: 8px;
     outline: none;
 }
 
 .buttonS i {
-    font-size: 20px!important;
-    color: #333!important;
+    font-size: 20px !important;
+    color: #333 !important;
 }
 
 /* .content {
@@ -1440,7 +1499,9 @@ input[type='checkbox']:checked {
     background-image: -o-linear-gradient(left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0));
 }
 
-.panel-login input[type="text"], .panel-login input[type="email"], .panel-login input[type="password"] {
+.panel-login input[type="text"],
+.panel-login input[type="email"],
+.panel-login input[type="password"] {
     height: 45px;
     border: 1px solid #ddd;
     font-size: 16px;
@@ -1449,7 +1510,8 @@ input[type='checkbox']:checked {
     transition: all 0.1s linear;
 }
 
-.panel-login input:hover, .panel-login input:focus {
+.panel-login input:hover,
+.panel-login input:focus {
     outline: none;
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
@@ -1459,7 +1521,7 @@ input[type='checkbox']:checked {
 
 .btn-login {
     outline: none;
-    color: #fff!important;
+    color: #fff !important;
     font-size: 14px;
     height: auto;
     font-weight: normal;
@@ -1467,10 +1529,11 @@ input[type='checkbox']:checked {
     text-transform: uppercase;
 }
 
-.btn-login:hover, .btn-login:focus {
-    color: #fff!important;
-    background-color: #1D8B94!important;
-    border-color: #1D8B94!important;
+.btn-login:hover,
+.btn-login:focus {
+    color: #fff !important;
+    background-color: #1D8B94 !important;
+    border-color: #1D8B94 !important;
 }
 
 .forgot-password {
@@ -1478,14 +1541,15 @@ input[type='checkbox']:checked {
     color: #888;
 }
 
-.forgot-password:hover, .forgot-password:focus {
+.forgot-password:hover,
+.forgot-password:focus {
     text-decoration: underline;
     color: #666;
 }
 
 .btn-register {
     outline: none;
-    color: #fff!important;
+    color: #fff !important;
     font-size: 14px;
     height: auto;
     font-weight: normal;
@@ -1493,13 +1557,15 @@ input[type='checkbox']:checked {
     text-transform: uppercase;
 }
 
-.btn-register:hover, .btn-register:focus {
-    color: #fff!important;
-    background-color: #1D8B94!important;
-    border-color: #1D8B94!important;
+.btn-register:hover,
+.btn-register:focus {
+    color: #fff !important;
+    background-color: #1D8B94 !important;
+    border-color: #1D8B94 !important;
 }
 
-#register-form-link, #login-form-link {
+#register-form-link,
+#login-form-link {
     margin-left: 20px;
 }
 
@@ -1508,7 +1574,7 @@ input[type='checkbox']:checked {
 }
 
 .user-panel .info {
-    overflow: unset!important;
+    overflow: unset !important;
 }
 
 /* .pl-br {
@@ -1522,7 +1588,7 @@ input[type='checkbox']:checked {
 .checkout-btn {
     background-color: #007bff;
     color: #fff;
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border: none;
     padding: 15px 32px;
     text-align: center;
@@ -1536,10 +1602,11 @@ input[type='checkbox']:checked {
 }
 
 .checkout-btn:focus {
-    outline: none!important;
+    outline: none !important;
 }
 
-.checkout-link, .checkout-link:hover {
+.checkout-link,
+.checkout-link:hover {
     color: #fff;
     text-decoration: none;
 }
@@ -1585,19 +1652,24 @@ input[type='checkbox']:checked {
     .hoc {
         max-width: 90%;
     }
+
     #header {
         padding: 30px 0;
     }
+
     #header #logo {
         margin-top: 0;
     }
+
     #mainav ul {
         display: none;
     }
+
     #mainav form {
         display: block;
         margin-top: 8px;
     }
+
     /* #comments input[type="reset"] {
         margin-top: 10px;
     } */
@@ -1605,6 +1677,7 @@ input[type='checkbox']:checked {
         display: inline-block;
         margin: 0 5px 5px 0;
     }
+
     #copyright p:first-of-type {
         margin-bottom: 10px;
     }
@@ -1615,7 +1688,8 @@ input[type='checkbox']:checked {
         display: flex;
         flex-direction: column;
     }
-    .product-showing + p {
+
+    .product-showing+p {
         margin-top: 18px;
     }
 
@@ -1625,63 +1699,91 @@ input[type='checkbox']:checked {
 }
 
 @media screen and (max-width:750px) {
-    .imgl, .imgr {
+
+    .imgl,
+    .imgr {
         display: inline-block;
         float: none;
         margin: 0 0 10px 0;
     }
-    .fl_left, .fl_right {
+
+    .fl_left,
+    .fl_right {
         display: block;
         float: none;
     }
-    .group .group>*:last-child, .clear .clear>*:last-child, .clear .group>*:last-child, .group .clear>*:last-child {
+
+    .group .group>*:last-child,
+    .clear .clear>*:last-child,
+    .clear .group>*:last-child,
+    .group .clear>*:last-child {
         margin-bottom: 0;
     }
+
     /* Experimental - Needs more testing in different situations, stops double margin when stacking */
-    .one_half, .one_third, .two_third, .one_quarter, .two_quarter, .three_quarter {
+    .one_half,
+    .one_third,
+    .two_third,
+    .one_quarter,
+    .two_quarter,
+    .three_quarter {
         display: block;
         float: none;
         width: auto;
         margin: 0 0 30px 0;
         padding: 0;
     }
+
     #header {
         text-align: center;
     }
+
     #header #logo {
         margin: 0 0 15px 0;
     }
+
     #pageintro article {
         max-width: none;
     }
+
     #pageintro .heading {
         font-size: 2rem;
     }
+
     #pageintro p:first-of-type {
         font-size: 1rem;
     }
-    .sectiontitle, .testimonial article {
+
+    .sectiontitle,
+    .testimonial article {
         max-width: none;
     }
+
     .testimonial article {
         text-align: left;
     }
+
     .cta> :first-child {
         margin-top: 0;
         text-align: center;
     }
+
     .cta footer a {
         display: inline-block;
     }
+
     .prices li:nth-last-child(-n+3) {
         margin-bottom: 50px;
     }
+
     #latest ul li:nth-last-child(-n+3) {
         margin-bottom: 30px;
     }
+
     #footer {
         padding-bottom: 50px;
     }
+
     /* Not required, just looks a little better */
 }
 
@@ -1703,34 +1805,41 @@ input[type='checkbox']:checked {
         overflow: auto;
         overflow-x: scroll;
     }
+
     .scrollable table {
         margin: 0;
         padding: 0;
         white-space: nowrap;
     }
+
     .inline li {
         display: block;
         margin-bottom: 10px;
     }
+
     .pushright li {
         margin-right: 0;
     }
+
     .font-x2 {
         font-size: 1.4rem;
     }
+
     .font-x3 {
         font-size: 1.6rem;
     }
+
     .shop-top-bar {
         padding: 10px;
     }
+
     .col .pl-br {
-        flex-direction: column!important;
+        flex-direction: column !important;
     }
 }
 
 .card-body .table th {
-    background-color: #007bff!important;
+    background-color: #007bff !important;
 }
 
 .table a {
@@ -1761,7 +1870,8 @@ input[type='checkbox']:checked {
     margin-top: 80px;
 }
 
-.price, .hours {
+.price,
+.hours {
     width: 100%;
 }
 
@@ -1787,7 +1897,7 @@ input[type='checkbox']:checked {
 }
 
 .clr:hover {
-    color: #53D3DE!important;
+    color: #53D3DE !important;
 }
 
 .actions a {
@@ -1811,7 +1921,7 @@ input[type='checkbox']:checked {
 }
 
 .table-wish a {
-    padding: 0!important;
+    padding: 0 !important;
     font-size: 19px;
 }
 
@@ -1819,7 +1929,8 @@ input[type='checkbox']:checked {
     font-size: 19px;
 }
 
-.wish-name a, .wish-link a {
+.wish-name a,
+.wish-link a {
     color: #000;
 }
 
@@ -1836,7 +1947,7 @@ input[type='checkbox']:checked {
 }
 
 .one-third {
-    height: 100%!important;
+    height: 100% !important;
     max-width: 50%;
 }
 
@@ -1844,7 +1955,8 @@ input[type='checkbox']:checked {
     width: 100%;
 }
 
-.cart-image img , #order-table img{
+.cart-image img,
+#order-table img {
     max-width: 130px;
 }
 
@@ -1852,3 +1964,62 @@ input[type='checkbox']:checked {
     font-size: 22px;
 }
 
+
+.headings-course-info {
+    float: left;
+}
+
+.stats-course-info {
+    float: right;
+}
+
+.mb-8 {
+    margin-bottom: 3.5rem !important;
+}
+
+#btnAddLesson {
+    margin-top: -40px;
+    background-color: #0051a9;
+    color: #fff;
+    display: block;
+    width: auto;
+    margin: -50px auto 20px auto;
+    position: relative;
+    z-index: 9999;
+}
+
+/* .centeredBtn {
+    display: flex;
+    justify-content: center;
+} */
+
+#btnRemoveLesson {
+    background-color: #ff0000;
+    color: #fff !important;
+    margin: 0 0 0 -10px;
+}
+
+
+.btnRemoveLessonFromEdit {
+    background-color: #ff0000 !important;
+    color: #fff !important;
+    margin: 0 0 0 -10px !important;
+}
+
+.lessons-heading {
+    margin: 10px 0 5px 0;
+    font-weight: bold;
+}
+
+.headings-course-info span {
+    font-weight: bold;
+}
+
+.image-course-info {
+    height: 177px;
+}
+
+.learning-img {
+    height: 100%;
+    max-width: 100%;
+}

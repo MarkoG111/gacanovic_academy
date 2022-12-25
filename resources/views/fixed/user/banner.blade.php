@@ -1,7 +1,7 @@
 <div class="wrapper bgded overlay gradient" style="background-image:url('{{ asset('img/background.jpg') }}');">
     <div id="pageintro" class="hoc clear">
         <article class="pageintro-wrap">
-            <p>Learn On Your Own !</p>
+            <p>Knowledge is the key.</p>
 
             <footer>
                 <form class="example" action="{{ route('courses') }}" method="GET">

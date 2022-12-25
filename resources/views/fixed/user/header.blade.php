@@ -33,7 +33,7 @@
     <div class="wrapper row1">
         <header id="header" class="hoc clear">
             <div id="logo" class="fl_left">
-                <h1><a href="">Gačanović Academy</a></h1>
+                <h1><a href="{{ route('home') }}">Gačanović Academy</a></h1>
             </div>
             <nav id="mainav" class="fl_right">
                 <ul class="clear">
@@ -47,7 +47,9 @@
                         @if (session()->has('user') && session()->get('user')->id_role == 1)
                             <li><a href="{{ route('logs') }}">Admin</a></li>
                         @endif
-                        <li><a href="{{ url('/orders') }}">Orders</a></li>
+                        @if (session()->has('user') && session()->get('user')->id_role !== 1)
+                            <li><a href="{{ url('/learnings') }}">My Learnings</a></li>
+                        @endif
                         <li><a href="{{ route('logout') }}">Logout</a></li>
                     @endif
                 </ul>

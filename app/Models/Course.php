@@ -10,11 +10,12 @@ use Illuminate\Support\Facades\DB;
 
 class Course extends Model
 {
-    public function insertCourse($courseName, $price, $totalHours, $image_small, $image_big, $id_category)
+    public function insertCourse($courseName, $description, $price, $totalHours, $image_small, $image_big, $id_category)
     {
         return DB::table('course')
             ->insertGetId([
                 'course_name' => $courseName,
+                'description' => $description,
                 'price' => $price,
                 'total_hours' => $totalHours,
                 'image_small' => $image_small,
@@ -29,6 +30,14 @@ class Course extends Model
     {
         return DB::table('course AS c')
             ->join('category AS cat', 'c.id_category', '=', 'cat.id_category')
+            ->get();
+    }
+
+    public function getCoursesInCart($idsCourses)
+    {
+        return DB::table('course AS cou')
+            ->join('category AS cat', 'cou.id_category', '=', 'cat.id_category')
+            ->whereIn('cou.id_course', $idsCourses)
             ->get();
     }
 
@@ -102,12 +111,13 @@ class Course extends Model
             ->delete();
     }
 
-    public function updateCourseWithoutImage($id, $name, $price, $hours, $category, $updatedAt)
+    public function updateCourseWithoutImage($id, $name, $description, $price, $hours, $category, $updatedAt)
     {
         return DB::table('course')
             ->where('id_course', $id)
             ->update([
                 'course_name' => $name,
+                'description' => $description,
                 'price' => $price,
                 'total_hours' => $hours,
                 'id_category' => $category,
@@ -115,18 +125,24 @@ class Course extends Model
             ]);
     }
 
-    public function updateCourseWithImage($id, $name, $price, $hours, $smallImage, $bigImage, $category, $updatedAt)
+    public function updateCourseWithImage($id, $name, $description, $price, $hours, $smallImage, $bigImage, $category, $updatedAt)
     {
         return DB::table('course')
-        ->where('id_course', $id)
-            ->update([
-                'course_name' => $name,
-                'price' => $price,
-                'total_hours' => $hours,
-                'image_small' => $smallImage,
-                'image_big' => $bigImage,
-                'id_category' => $category,
-                'updated_at' => $updatedAt
-            ]);
+            ->where('id_course', $id)
+                ->update([
+                    'course_name' => $name,
+                    'description' => $description,
+                    'price' => $price,
+                    'total_hours' => $hours,
+                    'image_small' => $smallImage,
+                    'image_big' => $bigImage,
+                    'id_category' => $category,
+                    'updated_at' => $updatedAt
+                ]);
+
+
+                // DELETE LESSON COURSE
+                // INSERT LESSON COURSE
+                // LESSONS
     }
 }

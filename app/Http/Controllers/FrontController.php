@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\FilterCoursesRequest;
-use App\Models\Cart;
+use App\Models\Lesson;
+use App\Models\Order;
 use App\Models\Category;
 use App\Models\Course;
 use App\Models\Topic;
@@ -15,14 +16,16 @@ class FrontController extends Controller
     protected $modelTopics;
     protected $modelCourses;
     protected $modelCategories;
-    protected $modelOrders;
+    protected $modelLearnings;
+    protected $modelLessons;
 
     public function __construct()
     {
         $this->modelTopics = new Topic();
         $this->modelCourses = new Course();
         $this->modelCategories = new Category();
-        $this->modelOrders = new Cart();
+        $this->modelLearnings = new Order();
+        $this->modelLessons = new Lesson();
 
         $categories = $this->modelCategories->getFeaturedCategories(3);
         $this->data['categories'] = $categories;
@@ -63,11 +66,24 @@ class FrontController extends Controller
         return view('pages.user.checkout', $this->data);
     }
 
-    public function ordersPage()
+    public function learningsPage()
     {
         $idUser = session()->get('user')->id_user;
 
-        return view('pages.user.orders', ['orders' => $this->modelOrders->listOrdersForUser($idUser), 'ordersAdmin' => $this->modelOrders->listOrdersAdmin(), 'categories' => $this->modelCategories->getFeaturedCategories(3)]);
+        $ves = ['myLearnings' => $this->modelLearnings->listLearningsForUser($idUser)];
+        foreach ($ves as $c) {
+            $p = [];
+            foreach ($c as $n) {
+                $p[] = $n->id_course;
+            }
+        }
+
+        return view('pages.user.learnings', ['myLearnings' => $this->modelLearnings->listLearningsForUser($idUser), 'categories' => $this->modelCategories->getFeaturedCategories(3), 'lessons' => $this->modelLessons->getAllLessonsForCourses($p)]);
+    }
+
+    public function ordersPage()
+    {
+        return view('pages.user.orders', ['ordersAdmin' => $this->modelLearnings->listOrdersAdmin(), 'categories' => $this->modelCategories->getFeaturedCategories(3)]);
     }
 
     public function coursesPage(FilterCoursesRequest $request)
@@ -84,6 +100,11 @@ class FrontController extends Controller
         $this->data['topicChb'] = $topicChb;
         $this->data['showing'] = $showing;
 
+        if (session()->has('user')) {
+            $idUser = session()->get('user')->id_user;
+            $this->data['myLearnings'] = $this->modelLearnings->listLearningsForUser($idUser);
+        }
+
         $this->data['courses'] = $this->modelCourses->filter($search, $categoriesChb, $topicChb, $sort, $showing);
         $this->data['topics'] = $this->modelTopics->getAllTopics();
 
@@ -92,6 +113,9 @@ class FrontController extends Controller
 
     public function singleCoursePage($id)
     {
+        $idUser = session()->get('user')->id_user;
+        $this->data['myLearnings'] = $this->modelLearnings->listLearningsForUser($idUser);
+
         $course = $this->modelCourses->getSingleCourse($id);
         $this->data['course'] = $course;
 

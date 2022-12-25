@@ -28,12 +28,12 @@
                                             @endforeach
                                         </select>
                                     </div>
-                                    <div class="product-search mt-t">
+                                    <div class="product-search">
+                                        <p>Search:</p>
                                         <footer>
                                             <form class="example" action="">
                                                 <input type="text" placeholder="Search For Courses" aria-label="true"
                                                     name="search" class="form-control" value="{{ $search }}">
-                                                <button type="submit" class="buttonS"><i class="fa fa-search"></i></button>
                                             </form>
                                         </footer>
                                     </div>
@@ -52,69 +52,91 @@
                                         </select>
 
                                     </div>
-                                    <p>Pages: {{ $courses->currentPage() }} of
-                                        {{ $courses->lastPage() }}</p>
+                                    <div class="">
+                                        <p>Pages: {{ $courses->currentPage() }} of
+                                            {{ $courses->lastPage() }}</p>
+
+                                        <button type="submit" class="buttonS"><i class="fa fa-search"></i></button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
 
                         <div class="shop-product-wrap grid with-sidebar row">
+                        @foreach ($courses as $course)
 
-                            @foreach ($courses as $course)
-                                @component('components.single_course', [
-                                    'course' => $course,
+                                @if (session()->has('user') && count($myLearnings) > 0)
+                                    @foreach ($myLearnings as $learning)
+                                        <?php
+                                            $ids_learning_courses[] = $learning->id_course;
+                                        ?>
+                                    @endforeach
+                                @endif
+
+                                @if (session()->has('user') && session()->get('user')->id_role == 2 && count($myLearnings) > 0)
+                                    @component('components.single_course',
+                                    [
+                                        'course' => $course,
+                                        'ids_learning_courses' => $ids_learning_courses,
                                     ])
-                                @endcomponent
-                            @endforeach
+                                    @endcomponent
+                                @else
+                                    @component('components.single_course',
+                                    [
+                                        'course' => $course,
+                                    ])
+                                    @endcomponent
+                                @endif
+                        @endforeach
 
-                            @if (!count($courses))
-                                <h2>No courses for specific request. Try another.</h2>
-                            @endif
+                        @if (!count($courses))
+                            <h2>No courses for specific request. Try another.</h2>
+                        @endif
+                            </div>
+                            <div class="row mt-30">
+                                <div class="col">
+                                    {{ $courses->links('pagination::bootstrap-4') }}
+                                </div>
+                            </div>
                         </div>
-                        <div class="row mt-30">
-                            <div class="col">
-                                {{ $courses->links('pagination::bootstrap-4') }}
+
+                        <div class="shop-sidebar-wrap col-xl-3 col-lg-4 col-12 order-lg-1">
+                            <div class="shop-sidebar">
+                                <h4 class="text-center pb-5 pt-2">TOPIC</h4>
+                                @foreach ($topics as $topic)
+                                    <div class="col-12 mb-15 position-relative">
+                                        @if (in_array($topic->id_topic, $topicChb ?? []))
+                                            <input type="checkbox" name="topic[]" id="remember_me"
+                                                value="{{ $topic->id_topic }}" checked />
+                                            <label for="remember_me">{{ $topic->topic_name }}</label>
+                                        @else
+                                            <input type="checkbox" name="topic[]" id="remember_me"
+                                                value="{{ $topic->id_topic }}" />
+                                            <label for="remember_me">{{ $topic->topic_name }}</label>
+                                        @endif
+                                    </div>
+                                @endforeach
+                            </div>
+
+                            <div class="shop-sidebar">
+                                <h4 class="text-center pb-5 pt-5">CATEGORY</h4>
+                                @foreach ($categories as $c)
+                                    <div class="col-12 mb-15 position-relative">
+                                        @if (in_array($c->id_category, $categoriesChb ?? []))
+                                            <input type="checkbox" name="categories[]" id="remember_me" checked="checked"
+                                                value="{{ $c->id_category }}">
+                                            <label for="remember_me">{{ $c->category_name }}</label>
+                                        @else
+                                            <input type="checkbox" name="categories[]" id="remember_me"
+                                                value="{{ $c->id_category }}">
+                                            <label for="remember_me">{{ $c->category_name }}</label>
+                                        @endif
+                                    </div>
+                                @endforeach
                             </div>
                         </div>
                     </div>
-
-                    <div class="shop-sidebar-wrap col-xl-3 col-lg-4 col-12 order-lg-1">
-                        <div class="shop-sidebar">
-                            <h4 class="text-center pb-5 pt-2">TOPIC</h4>
-                            @foreach ($topics as $topic)
-                                <div class="col-12 mb-15 position-relative">
-                                    @if (in_array($topic->id_topic, $topicChb ?? []))
-                                        <input type="checkbox" name="topic[]" id="remember_me"
-                                            value="{{ $topic->id_topic }}" checked />
-                                        <label for="remember_me">{{ $topic->topic_name }}</label>
-                                    @else
-                                        <input type="checkbox" name="topic[]" id="remember_me"
-                                            value="{{ $topic->id_topic }}" />
-                                        <label for="remember_me">{{ $topic->topic_name }}</label>
-                                    @endif
-                                </div>
-                            @endforeach
-                        </div>
-
-                        <div class="shop-sidebar">
-                            <h4 class="text-center pb-5 pt-5">CATEGORY</h4>
-                            @foreach ($categories as $c)
-                                <div class="col-12 mb-15 position-relative">
-                                    @if (in_array($c->id_category, $categoriesChb ?? []))
-                                        <input type="checkbox" name="categories[]" id="remember_me" checked="checked"
-                                            value="{{ $c->id_category }}">
-                                        <label for="remember_me">{{ $c->category_name }}</label>
-                                    @else
-                                        <input type="checkbox" name="categories[]" id="remember_me"
-                                            value="{{ $c->id_category }}">
-                                        <label for="remember_me">{{ $c->category_name }}</label>
-                                    @endif
-                                </div>
-                            @endforeach
-                        </div>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </section>
-@endsection
+                </form>
+            </div>
+        </section>
+    @endsection
