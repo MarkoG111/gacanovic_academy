@@ -354,12 +354,23 @@ $(document).ready(function() {
 
 	$(document).on('click', '#btnRemoveLesson', function(e) {
 		e.preventDefault();
+
 		$(this).parent('div').parent('div').remove();
 		counter--;
+
 		if (counter < 3) {
 			$('#btnAddLesson').fadeIn();
 		}
 	});
+
+
+    $('.alert-item-cart').click(function() {
+        alert('You must login first to add course in cart.');
+    })
+
+    $('.alert-item-wish').click(function() {
+        alert('You must login first to add this course in wishlist.');
+    })
 }); // END of Document
 
 function printPagination(links, url) {

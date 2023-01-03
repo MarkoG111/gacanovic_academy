@@ -24,8 +24,7 @@
                                 <tbody id="order-table">
                                     @foreach ($ordersAdmin as $oa)
                                         <tr>
-                                            <td><img src="{{ asset('img/courses/' . $oa->image_small) }}"
-                                                    alt="{{ $oa->course_name }}"></td>
+                                            <td><img src="{{ asset('img/courses/' . $oa->image_small) }}" alt="{{ $oa->course_name }}"></td>
                                             <td>{{ $oa->course_name }}</td>
                                             <td>{{ $oa->price }} &euro;</td>
                                             <td>{{ $oa->total_hours }}</td>

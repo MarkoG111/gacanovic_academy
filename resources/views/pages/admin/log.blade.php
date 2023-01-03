@@ -142,5 +142,6 @@
             });
         });
 
+        localStorage.setItem('courses', JSON.stringify([]));
     </script>
 @endsection

@@ -6,8 +6,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 
-
-
 class Lesson extends Model
 {
     use HasFactory;
@@ -21,27 +19,10 @@ class Lesson extends Model
             ]);
     }
 
-    public function updateCourseLesson($id_lesson, $url, $id_course)
-    {
-        return DB::table('lesson')
-            ->where('id_lesson', $id_lesson)
-            ->update([
-                'lesson' => $url,
-                'id_course' => $id_course
-            ]);
-    }
-
     public function getAllLessons()
     {
         return DB::table('lesson')
             ->get();
-    }
-
-    public function getLesson($id)
-    {
-        return DB::table('lesson')
-            ->where('id_lesson', $id)
-            ->first();
     }
 
     public function getAllLessonsForCourse($id_course)
@@ -66,6 +47,7 @@ class Lesson extends Model
             ->where('id_lesson', $id_lesson)
             ->delete();
     }
+
     public function deleteCourseLesson($id_course)
     {
         DB::table('lesson')

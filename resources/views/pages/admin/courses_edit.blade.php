@@ -11,14 +11,14 @@
         ],
         [
             'label' => 'Price',
-            'type' => 'text',
+            'type' => 'number',
             'name' => 'coursePrice',
             'placeholder' => 'Enter course price',
             'value' => $course->price,
         ],
         [
             'label' => 'Hours',
-            'type' => 'text',
+            'type' => 'number',
             'name' => 'courseHours',
             'placeholder' => 'Enter total hours',
             'value' => $course->total_hours,

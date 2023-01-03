@@ -17,6 +17,7 @@ use App\Models\Lesson;
 use App\Models\Topic;
 use App\Models\Course;
 
+use App\Models\Wish;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -30,6 +31,7 @@ class CourseController
     private $courseTopics;
     private $lessons;
     private $courseOrder;
+    private $wishes;
 
     public function __construct()
     {
@@ -39,6 +41,7 @@ class CourseController
         $this->courseTopics = new CourseTopic();
         $this->lessons = new Lesson();
         $this->courseOrder = new CourseOrder();
+        $this->wishes = new Wish();
     }
     /**
      * Display a listing of the resource.
@@ -156,6 +159,18 @@ class CourseController
                 $this->courseTopics->deleteCourse($id);
                 $this->courses->updateCourseWithImage($id, $courseName, $description, $price, $totalHours, $newImage[0], $newImage[1], $idCategory, $updatedAt);
 
+                // delete lessons of course
+                $this->lessons->deleteCourseLesson($id);
+
+                // insert lessons of course
+                if (is_array($request->input('lesson'))) {
+                    foreach ($request->input('lesson') as $lesson) {
+                        $this->lessons->insertCourseLesson($lesson, $id);
+                    }
+                } else {
+                    $this->lessons->insertCourseLesson($request->input('lesson'), $id);
+                }
+
                 foreach ($request->input('topicsChb') as $topic) {
                     $this->courseTopics->insertCourseTopic($id, $topic);
                 }
@@ -216,6 +231,7 @@ class CourseController
             $this->courseTopics->deleteCourse($id);
             $this->lessons->deleteCourseLesson($id);
             $this->courseOrder->deleteCourseFromOrder($id);
+            $this->wishes->deleteCoursFromWish($id);
             $this->courses->deleteCourse($id);
 
             DB::commit();

@@ -9,7 +9,7 @@ function addToCart() {
 
 	if (courses) {
 		if (courseAlreadyInCart()) {
-			alert('Course is already added in cart, You can not add more.');
+			alert('Course is already added in cart, You cannot add more.');
 		} else {
 			addInLocalStorage();
 			alert('Successfully added course in cart! Go to checkout in cart.');

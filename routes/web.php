@@ -59,7 +59,6 @@ Route::group(['middleware' => ['AuthoriseLogin']], function () {
     Route::get('/learnings', [FrontController::class, 'learningsPage'])->middleware('RecordAccessToPage');
 });
 
-// ->
 Route::get('/orders', [FrontController::class, 'ordersPage'])->middleware('RecordAccessToPage');
 Route::get('/cart/showCourses', [CartController::class, 'getCoursesForCart']);
 
@@ -71,7 +70,6 @@ Route::group(['middleware' => ['Authorise404']], function () {
         Route::delete('/deleteWish', [WishController::class, 'deleteWish']);
     });
 });
-
 
 Route::group(['middleware' => ['Admin']], function () {
     Route::prefix('/admin')->group(function () {

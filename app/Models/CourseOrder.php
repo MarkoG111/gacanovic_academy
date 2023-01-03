@@ -22,7 +22,7 @@ class CourseOrder extends Model
 
     public function deleteCourseFromOrder($id)
     {
-        DB::table('course_orders')
+        DB::table('courses_orders')
             ->where(['id_course' => $id])
             ->delete();
     }

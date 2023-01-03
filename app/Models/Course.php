@@ -139,10 +139,5 @@ class Course extends Model
                     'id_category' => $category,
                     'updated_at' => $updatedAt
                 ]);
-
-
-                // DELETE LESSON COURSE
-                // INSERT LESSON COURSE
-                // LESSONS
     }
 }

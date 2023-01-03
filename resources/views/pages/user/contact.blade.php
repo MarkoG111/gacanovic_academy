@@ -16,8 +16,7 @@
                         <div class="one_third first">
                             <label for="email">Mail <span>*</span></label>
                             @if (session()->has('user'))
-                                <input type="email" name="email" id="email" value="{{ session()->get('user')->email }}"
-                                    size="22" required>
+                                <input type="email" name="email" id="email" value="{{ session()->get('user')->email }}" size="22" required>
                                 <small id="emailHelp" class="form-text text-danger"></small>
                             @else
                                 <input type="email" name="email" id="email" value="" size="22" required>

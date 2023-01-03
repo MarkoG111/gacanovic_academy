@@ -16,7 +16,7 @@ class AuthController extends FrontController
     private $model;
 
     public function __construct()
-    { 
+    {
         $this->model = new User();
     }
 

@@ -24,8 +24,7 @@
 
                             <div class="form-group">
                                 <label for="username">Username</label>
-                                <input type="text" name="username" id="username" class="form-control"
-                                    placeholder="Enter username" />
+                                <input type="text" name="username" id="username" class="form-control" placeholder="Enter username" />
                             </div>
                             <div class="form-group">
                                 <label for="email">Email</label>
@@ -33,13 +32,11 @@
                             </div>
                             <div class="form-group">
                                 <label for="password">Password</label>
-                                <input type="password" name="password" id="password" class="form-control"
-                                    placeholder="Enter password" />
+                                <input type="password" name="password" id="password" class="form-control" placeholder="Enter password" />
                             </div>
                             <div class="form-group">
                                 <label for="confirmPassword">Repeat password</label>
-                                <input type="password" name="confirmPassword" id="confirmPassword" class="form-control"
-                                    placeholder="Repeat password" />
+                                <input type="password" name="confirmPassword" id="confirmPassword" class="form-control" placeholder="Repeat password" />
                             </div>
                             <div class="form-group">
                                 <label for="role">Role</label>

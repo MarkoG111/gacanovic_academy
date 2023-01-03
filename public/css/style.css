@@ -1969,9 +1969,6 @@ input[type='checkbox']:checked {
     float: left;
 }
 
-.stats-course-info {
-    float: right;
-}
 
 .mb-8 {
     margin-bottom: 3.5rem !important;

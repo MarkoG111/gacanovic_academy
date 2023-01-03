@@ -70,15 +70,15 @@ class FrontController extends Controller
     {
         $idUser = session()->get('user')->id_user;
 
-        $ves = ['myLearnings' => $this->modelLearnings->listLearningsForUser($idUser)];
-        foreach ($ves as $c) {
-            $p = [];
-            foreach ($c as $n) {
-                $p[] = $n->id_course;
+        $learnings = ['myLearnings' => $this->modelLearnings->listLearningsForUser($idUser)];
+        foreach ($learnings as $learning) {
+            $courses = [];
+            foreach ($learning as $l) {
+                $courses[] = $l->id_course;
             }
         }
 
-        return view('pages.user.learnings', ['myLearnings' => $this->modelLearnings->listLearningsForUser($idUser), 'categories' => $this->modelCategories->getFeaturedCategories(3), 'lessons' => $this->modelLessons->getAllLessonsForCourses($p)]);
+        return view('pages.user.learnings', ['myLearnings' => $this->modelLearnings->listLearningsForUser($idUser), 'categories' => $this->modelCategories->getFeaturedCategories(3), 'lessons' => $this->modelLessons->getAllLessonsForCourses($courses)]);
     }
 
     public function ordersPage()
@@ -113,8 +113,10 @@ class FrontController extends Controller
 
     public function singleCoursePage($id)
     {
-        $idUser = session()->get('user')->id_user;
-        $this->data['myLearnings'] = $this->modelLearnings->listLearningsForUser($idUser);
+        if (session()->has('user')) {
+            $idUser = session()->get('user')->id_user;
+            $this->data['myLearnings'] = $this->modelLearnings->listLearningsForUser($idUser);
+        }
 
         $course = $this->modelCourses->getSingleCourse($id);
         $this->data['course'] = $course;

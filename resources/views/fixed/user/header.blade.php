@@ -16,14 +16,25 @@
             <div class="fl_right">
 
                 <ul class="nospace">
-                    <li><a href="{{ url('/wishlist') }}" title="Your Whishlist"><i class="fas fa-heart fa-2x"></i>
-                            @if (session()->has('user')) <span class="number"
-                                    id="numberOfWishes">0</span>@endif
-                        </a></li>
-                    <li><a href="{{ url('/cart') }}" title="Your Cart"><i class="fas fa-shopping-cart fa-2x"></i>
-                            @if (session()->has('user'))<span class="number"
-                                    id="numberInCart">0</span>@endif
-                        </a></li>
+                    @if (session()->has('user') && session()->get('user')->id_role == 1)
+                        <h3>ADMIN</h3>
+                    @endif
+                    <li>
+                        @if (session()->has('user') && session()->get('user')->id_role == 2)
+                            <a href="{{ url('/wishlist') }}" title="Your Whishlist">
+                                <i class="fas fa-heart fa-2x"></i>
+                                <span class="number" id="numberOfWishes">0</span>
+                            </a>
+                        @endif
+                    </li>
+                    <li>
+                        @if (session()->has('user') && session()->get('user')->id_role == 2)
+                            <a href="{{ url('/cart') }}" title="Your Cart">
+                                <i class="fas fa-shopping-cart fa-2x"></i>
+                                <span class="number" id="numberInCart">0</span>
+                            </a>
+                        @endif
+                    </li>
                 </ul>
 
             </div>

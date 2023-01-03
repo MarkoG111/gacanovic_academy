@@ -26,8 +26,7 @@
 
                             <div class="form-group">
                                 <label for="username">Username</label>
-                                <input type="text" name="username" id="username" class="form-control"
-                                    placeholder="Enter username" value="{{ $user->username }}" />
+                                <input type="text" name="username" id="username" class="form-control" placeholder="Enter username" value="{{ $user->username }}" />
                             </div>
                             <div class="form-group">
                                 <label for="email">Email</label>
@@ -35,8 +34,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="password">Password</label>
-                                <input type="text" name="password" id="password" class="form-control"
-                                    placeholder="Enter password" />
+                                <input type="text" name="password" id="password" class="form-control" placeholder="Enter password" />
                             </div>
                             <div class="form-group">
                                 <label for="active">Active</label> <br/>

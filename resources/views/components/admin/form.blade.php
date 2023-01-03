@@ -19,8 +19,9 @@
                 <div class="card-body">
                     @if (isset($id))
                         <form action="{{ route($action, $id) }}" method="POST" enctype="multipart/form-data">
-                        @else
-                            <form action="{{ route($action) }}" method="POST" enctype="multipart/form-data">
+                            <input type="hidden" name="idCourseHdn" value="{{ $id }}">
+                    @else
+                        <form action="{{ route($action) }}" method="POST" enctype="multipart/form-data">
                     @endif
 
                     @method($method)
@@ -46,6 +47,7 @@
                                     <input type="{{ $input['type'] ?? 'text' }}" class="form-control"
                                         id="{{ $input['id'] ?? '' }}" value="{{ $input['value'] ?? '' }}"
                                         name="{{ $input['name'] ?? '' }}"
+                                        step=".01"
                                         placeholder="{{ $input['placeholder'] ?? '' }}" />
                                 @endif
                             </div>
@@ -60,9 +62,9 @@
                                     <label>{{ $lesson->label ?? '' }}</label>
 
                                     <input type="{{ $lesson->type ?? 'text' }}" class="form-control mb-8"
-                                    id="{{ $lesson->value ?? '' }}" value="{{ $lesson->text ?? '' }}"
-                                    name="{{ $lesson->name ?? '' }}"
-                                    placeholder="{{ $lesson->placeholder ?? '' }}" />
+                                        id="{{ $lesson->value ?? '' }}" value="{{ $lesson->text ?? '' }}"
+                                        name="{{ $lesson->name ?? '' }}"
+                                        placeholder="{{ $lesson->placeholder ?? '' }}" />
                                 </div>
                             </div>
 
@@ -81,9 +83,10 @@
                                     <div class="form-group lessonRow row" id="{{ $option['value'] }}">
                                         <div class="col-11">
                                             <input type="text" class="form-control mb-8"
-                                            id="{{ $option['value'] ?? '' }}"
-                                            value="{{ $option['text'] ?? '' }}"
-                                            name="{{ $arl->name ?? '' }}" />
+                                                id="{{ $option['value'] ?? '' }}"
+                                                value="{{ $option['text'] ?? '' }}"
+                                                step=".01"
+                                                name="{{ $arl->name ?? '' }}" />
                                         </div>
 
                                         <div class="col-1">
@@ -91,20 +94,16 @@
                                         </div>
                                     </div>
                                 @endforeach
-
-                                <div class="center-align centeredBtn">
-                                    <button type="button" class="btn blue" id="btnAddLesson"><i class="fa fa-plus"></i></button>
-                                </div>
                             @endif
                         @endforeach
+                        <div class="center-align centeredBtn">
+                            <button type="button" class="btn blue" id="btnAddLesson"><i class="fa fa-plus"></i></button>
+                        </div>
                     @endif
 
                     @if (isset($arrayDropdowns))
-
                         @foreach ($arrayDropdowns as $dd)
-
                             <div class="form-group">
-
                                 <label>{{ $dd->label ?? '' }}</label>
 
                                 <select name="{{ $dd->name }}"  class="form-control">
@@ -113,32 +112,23 @@
                                     @foreach ($dd->option as $option)
                                         @if (isset($dd->selected))
                                             @if ($option['value'] == $dd->selected)
-                                                <option selected value="{{ $option['value'] ?? '' }}">
-                                                    {{ $option['text'] }}</option>
+                                                <option selected value="{{ $option['value'] ?? '' }}">{{ $option['text'] }}</option>
                                             @else
-                                                <option value="{{ $option['value'] ?? '' }}">{{ $option['text'] }}
-                                                </option>
+                                                <option value="{{ $option['value'] ?? '' }}">{{ $option['text'] }}</option>
                                             @endif
                                         @else
-                                            <option value="{{ $option['value'] ?? '' }}">{{ $option['text'] }}
-                                            </option>
+                                            <option value="{{ $option['value'] ?? '' }}">{{ $option['text'] }}</option>
                                         @endif
-
                                     @endforeach
-
                                 </select>
-
                             </div>
-
                         @endforeach
-
                     @endif
 
 
 
                     @if (isset($arrayCheckboxes))
                         @foreach ($arrayCheckboxes as $chb)
-
                             <div class="form-group">
                                 <label>{{ $chb->label ?? '' }}</label>
                                 <div class="d-flex justify-content-around flex-wrap">
@@ -156,7 +146,6 @@
                                         @endif
                                     @endforeach
                                 </div>
-
                             </div>
                         @endforeach
                     @endif

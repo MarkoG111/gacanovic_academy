@@ -21,13 +21,13 @@
                                     <div class="headings-course-info">
                                         <p><span>Bought At: </span> {{ $learning->created_at }}</p>
                                         <p>{{ $learning->description }}</p>
-                                        <p><span>Price: </span> {{ $learning->total_price }} &euro;</p>
+                                        <p><span>Price: </span> {{ $learning->price }} &euro;</p>
                                     </div>
                                     <div class="stats-course-info">
                                         <p class="lessons-heading"><span>Lessons: </span> </p>
                                         @foreach ($lessons as $lesson)
                                             @if ($lesson->id_course == $learning->id_course)
-                                                <p>- {{ $lesson->lesson }}</p>
+                                                <a href="{{ $lesson->lesson }}" target="_blank"> <p>- {{ $lesson->lesson }}</p> </a>
                                             @endif
                                         @endforeach
                                     </div>

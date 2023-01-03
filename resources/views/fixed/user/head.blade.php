@@ -13,4 +13,5 @@
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('fontawesome/css/fontawesome-all.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet" type="text/css" />
+    <link rel="icon" href="{{ url('favicon.png') }}">
 </head>

@@ -4,17 +4,18 @@
 @endsection
 
 @section('content')
-    @foreach ($myLearnings as $learning)
-        <?php
-        $ids_learning_courses[] = $learning->id_course;
-        ?>
-    @endforeach
+    @if (session()->has('user'))
+        @foreach ($myLearnings as $learning)
+            <?php
+                $ids_learning_courses[] = $learning->id_course;
+            ?>
+        @endforeach
+    @endif
     <section class="content">
         <div class="row">
             <div class="col-md-6 col-12 text-center mx-auto my-5">
                 <div class="single-image">
-                    <img src="{{ asset('/img/courses/' . $course->image_big) }}" class="img-fluid"
-                        alt="{{ $course->course_name }}">
+                    <img src="{{ asset('/img/courses/' . $course->image_big) }}" class="img-fluid" alt="{{ $course->course_name }}">
                 </div>
             </div>
             <div class="col-md-6 col-12 text-md-left text-center">
@@ -37,19 +38,20 @@
                                     @if (in_array($course->id_course, $ids_learning_courses))
                                         <h4>You already bought this course.</h4>
                                     @else
-                                        <a href="javascript:void(0)" class="add-course-to-cart"
-                                            data-idcourse="{{ $course->id_course }}"><i
-                                                class="fas fa-shopping-cart fa-2x clr "></i><span>Add To Cart</span></a>
-                                        <a href="javascript:void(0)" class="wishhhh"
-                                            data-idcourse="{{ $course->id_course }}"><i
-                                                class="fas fa-heart fa-2x clr "></i><span>Add To Whishlist</span></a>
+                                        <a href="javascript:void(0)" class="add-course-to-cart" data-idcourse="{{ $course->id_course }}">
+                                            <i class="fas fa-shopping-cart fa-2x clr "></i><span>Add To Cart</span>
+                                        </a>
+                                        <a href="javascript:void(0)" class="wishhhh" data-idcourse="{{ $course->id_course }}">
+                                            <i class="fas fa-heart fa-2x clr "></i><span>Add To Whishlist</span>
+                                        </a>
                                     @endif
                                 @else
-                                    <a href="javascript:void(0)" class="add-course-to-cart"
-                                        data-idcourse="{{ $course->id_course }}"><i
-                                            class="fas fa-shopping-cart fa-2x clr "></i><span>Add To Cart</span></a>
-                                    <a href="javascript:void(0)" class="wishhhh" data-idcourse="{{ $course->id_course }}"><i
-                                            class="fas fa-heart fa-2x clr "></i><span>Add To Whishlist</span></a>
+                                    <a href="javascript:void(0)" class="add-course-to-cart" data-idcourse="{{ $course->id_course }}">
+                                        <i class="fas fa-shopping-cart fa-2x clr "></i><span>Add To Cart</span>
+                                    </a>
+                                    <a href="javascript:void(0)" class="wishhhh" data-idcourse="{{ $course->id_course }}">
+                                        <i class="fas fa-heart fa-2x clr "></i><span>Add To Whishlist</span>
+                                    </a>
                                 @endif
                             @endif
                         @else

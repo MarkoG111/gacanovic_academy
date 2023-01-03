@@ -16,8 +16,10 @@
             <div class="col-6">
                 <div id="author_info">
                     <p class="textAurhor">My name is Marko Gačanović, 25 years old</p>
-                    <p class="college">Student of ICT College of Vocational Studies, Information Technology course. <br/><br/>
-                        Index number : 38 / 17</p>
+                    <p class="college">
+                        Student of ICT College of Vocational Studies, Information Technology course. <br/><br/>
+                        Index number : 38 / 17
+                    </p>
                 </div>
             </div>
         </div>

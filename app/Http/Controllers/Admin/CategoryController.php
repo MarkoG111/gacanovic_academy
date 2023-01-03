@@ -6,12 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\AddCategoryRequest;
 use App\Http\Requests\UpdateCategoryRequest;
 use App\Http\Services\Helper;
-use App\Http\Services\ImageHelper;
 use App\Http\Services\Logs;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use PDOException;
-use Intervention\Image\Facades\Image;
 
 class CategoryController extends Controller
 {

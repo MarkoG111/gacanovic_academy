@@ -29,9 +29,6 @@
 
         <div class="row">
             <div class="col-10">
-                {{-- <button class="checkout-btn mt-90">
-                    <a href="{{  url('/checkout') }}" class="checkout-link">Proceed To Checkout</a>
-                </button> --}}
                 <form action="{{ route('checkout') }}" method="POST">
                     @csrf
 
