@@ -30,7 +30,7 @@ class ContactController extends FrontController
         ];
 
         try {
-            Mail::to('test.test@gmail.com')->send(new ContactMail($obj));
+            Mail::to('markogacanovic111@gmail.com')->send(new ContactMail($obj));
 
             $this->model->storeContactEmail($obj);
 
