@@ -365,11 +365,11 @@ $(document).ready(function() {
 
 
     $('.alert-item-cart').click(function() {
-        alert('You must login first to add course in cart.');
+      alert('You must login first to add course in cart.');
     })
 
     $('.alert-item-wish').click(function() {
-        alert('You must login first to add this course in wishlist.');
+      alert('You must login first to add this course in wishlist.');
     })
 }); // END of Document
 
