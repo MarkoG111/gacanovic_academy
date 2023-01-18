@@ -9,6 +9,9 @@ const regExpAdminTopics = new RegExp(`^${baseURL}admin/topics/create[\#]?$`);
 const regExpAdminUsers = new RegExp(`^${baseURL}admin/users/create[\#]?$`);
 const regExpAdminMails = new RegExp(`^${baseURL}admin/contact/create[\#]?$`);
 
+const regExpInstructor = new RegExp(`^${baseURL}instructor[\#]?$`);
+const regExpInstructorEditCourse = new RegExp(`^${baseURL}instructor\/[0-9]+\/edit[\#]?$`);
+
 const regExpEditTopics = new RegExp(`^${baseURL}admin\/topics\/[0-9]+\/edit[\#]?$`);
 const regExpEditCategories = new RegExp(`^${baseURL}admin\/categories\/[0-9]+\/edit[\#]?$`);
 
@@ -28,6 +31,11 @@ $(document).ready(function() {
 
 		let page = $(this).data('page');
 
+		let pageURL = window.location.href;
+		let idFromURL = pageURL.split('/');
+		let id = idFromURL[4];
+		let idAdmin = idFromURL[5];
+
 		$.ajax({
 			url: page,
 			dataType: 'json',
@@ -36,8 +44,13 @@ $(document).ready(function() {
 				switch (window.location.href) {
 					case baseURL + 'admin/courses/create':
 					case baseURL + 'admin/courses/create#':
+					case baseURL + 'instructor':
+					case baseURL + 'instructor#':
+					case baseURL + 'instructor/' + id + '/edit':
+					case baseURL + 'instructor/' + id + '/edit#':
+					case baseURL + 'admin/courses/' + idAdmin + '/edit':
+					case baseURL + 'admin/courses/' + idAdmin + '/edit#':
 						printAllCoursesTable(data.data);
-						break;
 					case baseURL + 'admin/categories/create':
 					case baseURL + 'admin/categories/create#':
 						printAllCategoriesTable(data.data);
@@ -48,6 +61,8 @@ $(document).ready(function() {
 						break;
 					case baseURL + 'admin/users/create':
 					case baseURL + 'admin/users/create#':
+					case baseURL + 'admin/users/' + idAdmin + '/edit':
+					case baseURL + 'admin/users/' + idAdmin + '/edit#':
 						printAllUsersTable(data.data);
 						break;
 					case baseURL + 'admin/contact/create':
@@ -90,6 +105,31 @@ $(document).ready(function() {
 	if (regExpEditCourses.test(window.location.href)) {
 		//$('.btnRemoveLessonFromEdit').hide();
 		// $('#btnAddLesson').hide();
+	}
+
+	if (regExpInstructor.test(window.location.href) || regExpInstructorEditCourse.test(window.location.href)) {
+		$('#table').attr('id', 'coursesTable');
+		$('#table_paginate').attr('id', 'coursesTable_paginate');
+
+		loadInstructorCourses();
+
+		$(document).on('click', '.delete_course_instructor', function() {
+			let id = $(this).data('id');
+
+			$.ajax({
+				url: '/destroy/' + id,
+				method: 'DELETE',
+				success: function(data, status, xhr) {
+					if (xhr.status == 204) {
+						loadInstructorCourses();
+						$('.msgCrud').html('Successfully deleted.');
+					}
+				},
+				error: function(xhr, status, error) {
+					$('.msgCrud').html(error);
+				}
+			});
+		});
 	}
 
 	if (regExpAdminCourses.test(window.location.href) || regExpEditCourses.test(window.location.href)) {
@@ -169,26 +209,27 @@ $(document).ready(function() {
 
 	$('.btnRemoveLessonFromEdit').click(function() {
 		let id = $(this).data('id');
-        if (confirm('Are you sure you want to delete this lesson?')) {
-            $.ajax({
-                url: '/admin/lesson/' + id,
-                method: 'DELETE',
-                success: function(data, status, xhr) {
-                    alert('Successfully deleted lesson.');
-                    location.reload();
-                },
-                error: function(xhr, status, error) {
-                    $('.msgCrud').html(error);
-                    $('.msgCrud').html(xhr.status);
-                }
-            });
-        }
+		if (confirm('Are you sure you want to delete this lesson?')) {
+			$.ajax({
+				url: '/admin/lesson/' + id,
+				method: 'DELETE',
+				success: function(data, status, xhr) {
+					alert('Successfully deleted lesson.');
+					location.reload();
+				},
+				error: function(xhr, status, error) {
+					$('.msgCrud').html(error);
+					$('.msgCrud').html(xhr.status);
+				}
+			});
+		}
 	});
-
 
 	if (regExpAdminUsers.test(window.location.href) || regExpEditUsers.test(window.location.href)) {
 		$('#table').attr('id', 'usersTable');
 		$('#table_paginate').attr('id', 'usersTable_paginate');
+
+		$('#usersTable_paginate').css('margin-top', '12px');
 
 		loadAdminUsers();
 
@@ -200,7 +241,6 @@ $(document).ready(function() {
 				confirmPassword: $('#confirmPassword').val().trim(),
 				role: $('#role').val()
 			};
-			console.log(data);
 
 			$.ajax({
 				url: '/admin/users',
@@ -250,7 +290,6 @@ $(document).ready(function() {
 	}
 
 	if (regExpLoginRegister.test(window.location.href)) {
-		console.log('active');
 		$('#login-form-link').click(function(e) {
 			e.preventDefault();
 
@@ -263,7 +302,6 @@ $(document).ready(function() {
 		});
 
 		$('#register-form-link').click(function(e) {
-			console.log(22);
 			e.preventDefault();
 
 			$('#register-form').delay(100).fadeIn(100);
@@ -363,14 +401,13 @@ $(document).ready(function() {
 		}
 	});
 
+	$('.alert-item-cart').click(function() {
+		alert('You must login first to add course in cart.');
+	});
 
-    $('.alert-item-cart').click(function() {
-      alert('You must login first to add course in cart.');
-    })
-
-    $('.alert-item-wish').click(function() {
-      alert('You must login first to add this course in wishlist.');
-    })
+	$('.alert-item-wish').click(function() {
+		alert('You must login first to add this course in wishlist.');
+	});
 }); // END of Document
 
 function printPagination(links, url) {
@@ -382,10 +419,20 @@ function printPagination(links, url) {
 	}
 	print += `</ul>`;
 
+	let pageURL = window.location.href;
+	let idFromURL = pageURL.split('/');
+	let id = idFromURL[4];
+	let idAdmin = idFromURL[5];
+
 	switch (window.location.href) {
 		case baseURL + 'admin/courses/create':
 		case baseURL + 'admin/courses/create#':
-        case baseURL + 'admin/courses/22/edit':
+		case baseURL + 'instructor':
+		case baseURL + 'instructor#':
+		case baseURL + 'instructor/' + id + '/edit':
+		case baseURL + 'instructor/' + id + '/edit#':
+		case baseURL + 'admin/courses/' + idAdmin + '/edit':
+		case baseURL + 'admin/courses/' + idAdmin + '/edit#':
 			$('#coursesTable_paginate').html(print);
 			break;
 		case baseURL + 'admin/categories/create':
@@ -398,6 +445,8 @@ function printPagination(links, url) {
 			break;
 		case baseURL + 'admin/users/create':
 		case baseURL + 'admin/users/create#':
+		case baseURL + 'admin/users/' + idAdmin + '/edit':
+		case baseURL + 'admin/users/' + idAdmin + '/edit#':
 			$('#usersTable_paginate').html(print);
 			break;
 		case baseURL + 'admin/contact/create':
@@ -448,6 +497,22 @@ function printAllMailsTable(data) {
 	$('#mailsTable').html(print);
 }
 
+function loadInstructorCourses() {
+	$.ajax({
+		url: '/index',
+		dataType: 'json',
+		method: 'GET',
+		success: function(data) {
+			let paginationLinks = Math.ceil(data.total / data.per_page);
+			printPagination(paginationLinks, data.path);
+			printAllCoursesTable(data.data);
+		},
+		error: function(xhr, status, error) {
+			alert(xhr.status);
+		}
+	});
+}
+
 function loadAdminCourses() {
 	$.ajax({
 		url: '/admin/courses',
@@ -475,14 +540,23 @@ function printAllCoursesTable(data) {
             <th>Delete</th>
         </tr>`;
 	for (let i of data) {
+		let id_course = i.id_course;
 		print += `<tr>
                 <td>${i.id_course}</td>
                 <td>${i.course_name}</td>
                 <td>${i.price} &euro;</td>
                 <td>${i.created_at}</td>
                 <td>${i.updated_at}</td>
-                <td><a href='/admin/courses/${i.id_course}/edit' class='btn btn-outline-success' data-id='${i.id_course}'>Edit</a></td>
-                <td><a href='#' class='btn btn-outline-danger delete_course' data-id='${i.id_course}'>Delete</a></td>
+                <td><a href="${regExpInstructor.test(window.location.href) ||
+				regExpInstructorEditCourse.test(window.location.href)
+					? '/instructor/' + id_course + '/edit'
+					: '/admin/courses/' +
+						id_course +
+						'/edit'}"  class='btn btn-outline-success' data-id='${i.id_course}'>Edit</a></td>
+                <td><a href='#' class='btn btn-outline-danger ${regExpInstructor.test(window.location.href) ||
+				regExpInstructorEditCourse.test(window.location.href)
+					? 'delete_course_instructor'
+					: 'delete_course'} delete_course' data-id='${i.id_course}'>Delete</a></td>
             </tr>`;
 	}
 
@@ -588,10 +662,10 @@ function loadAdminUsers() {
 
 function printAllUsersTable(data) {
 	let print = `<tr>
-        <th>ID</th>
         <th>Username</th>
         <th>Email</th>
         <th>Active</th>
+        <th>Insrcutor</th>
         <th>Role</th>
         <th>Created At</th>
         <th>Updated At</th>
@@ -600,11 +674,24 @@ function printAllUsersTable(data) {
         <th>Delete</th>
     </tr>`;
 	for (let i of data) {
+		if (i.last_login == null) {
+			i.last_login = '/';
+		}
+		if (i.active == 1) {
+			i.active = 'Yes';
+		} else {
+			i.active = 'No';
+		}
+		if (i.is_instructor == 1) {
+			i.is_instructor = 'Yes';
+		} else {
+			i.is_instructor = 'No';
+		}
 		print += `<tr>
-            <td>${i.id_user}</td>
             <td>${i.username}</td>
             <td>${i.email}</td>
             <td>${i.active}</td>
+            <td>${i.is_instructor}</td>
             <td>${i.role_name}</td>
             <td>${i.created_at}</td>
             <td>${i.updated_at}</td>
@@ -677,3 +764,38 @@ function handleParametersException(xhr) {
 
 	return printErrors;
 }
+
+$('#btnVote').click(function() {
+	let idUser = $('#hdnIdUsr').val();
+	let answer = $("input[name='teachingAns']:checked").val();
+	// console.log(answer);
+	if (!answer) {
+		$('#votingRes').html('You must choose answer.');
+	} else {
+		$.ajax({
+			url: '/api/vote',
+			method: 'POST',
+			dataType: 'json',
+			data: {
+				idUser: idUser,
+				answer: answer
+			},
+			success: function(data, status, xhr) {
+				if (xhr.status == 201) {
+					$('#votingRes').html('You have now become instructor.');
+
+					$("input[name='teachingAns']:checked").val('');
+
+					$('#btnCreateCourse').css('display', 'block');
+					$('#poll-instructor').css('display', 'none');
+					$('#poll-heading').css('display', 'none');
+					$('#btnVote').css('display', 'none');
+				}
+			},
+			error: function(xhr, status, error) {
+				console.log(xhr.status);
+				console.log(error);
+			}
+		});
+	}
+});

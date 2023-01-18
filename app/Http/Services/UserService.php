@@ -28,6 +28,13 @@ class UserService
             $obj['active'] = 0;
         }
 
+        $isInstructor = $request->input('isInstructor');
+        if ($isInstructor != null) {
+            $obj['is_instructor'] = $isInstructor;
+        } else {
+            $obj['is_instructor'] = 0;
+        }
+
         $password = $request->input('password');
         if ($password != null) {
             $obj['password'] = md5($password);

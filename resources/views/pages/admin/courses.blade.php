@@ -1,4 +1,4 @@
-@extends('layout.admin')
+@extends(session()->get('user')->id_role == 2 ? 'layout.instructor' : 'layout.admin')
 
 @php
     $arrayInputs = [
@@ -69,17 +69,33 @@
 @endphp
 
 @section('content')
-    @component('components.admin.form',
-        [
-            'headTitle' => 'Courses',
-            'title' => 'Add New Course',
-            'method' => 'POST',
-            'action' => 'courses.store',
-            'arrayInputs' => $arrayInputs,
-            'arrayLessons' => $arrayLessons,
-            'arrayDropdowns' => $arrayDropdowns,
-            'arrayCheckboxes' => $arrayCheckboxes,
-            'button' => '',
-        ])
-    @endcomponent
+    @if (session()->get('user')->id_role == 1)
+        @component('components.admin.form',
+            [
+                'headTitle' => 'Courses',
+                'title' => 'Add New Course',
+                'method' => 'POST',
+                'action' => 'courses.store',
+                'arrayInputs' => $arrayInputs,
+                'arrayLessons' => $arrayLessons,
+                'arrayDropdowns' => $arrayDropdowns,
+                'arrayCheckboxes' => $arrayCheckboxes,
+                'button' => '',
+            ])
+        @endcomponent
+    @else
+        @component('components.instructor.form',
+            [
+                'pageTitleInstructor' => 'Courses - Instructor',
+                'formTitleInstructor' => 'Add New Course',
+                'methodInstructor' => 'POST',
+                'actionInstructor' => 'instructorStoreCourse',
+                'arrayInputsInstructor' => $arrayInputs,
+                'arrayLessonsInstructor' => $arrayLessons,
+                'arrayDropdownsInstructor' => $arrayDropdowns,
+                'arrayCheckboxesInstructor' => $arrayCheckboxes,
+                'buttonInstructor' => '',
+            ])
+        @endcomponent
+    @endif
 @endsection

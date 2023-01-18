@@ -17,6 +17,7 @@ use App\Models\Lesson;
 use App\Models\Topic;
 use App\Models\Course;
 
+use App\Models\User;
 use App\Models\Wish;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -25,6 +26,7 @@ use PDOException;
 
 class CourseController
 {
+    private $data;
     private $categories;
     private $topics;
     private $courses;
@@ -32,6 +34,7 @@ class CourseController
     private $lessons;
     private $courseOrder;
     private $wishes;
+    private $users;
 
     public function __construct()
     {
@@ -42,6 +45,7 @@ class CourseController
         $this->lessons = new Lesson();
         $this->courseOrder = new CourseOrder();
         $this->wishes = new Wish();
+        $this->users = new User();
     }
     /**
      * Display a listing of the resource.
@@ -76,6 +80,10 @@ class CourseController
         $price = $request->input('coursePrice');
         $totalHours = $request->input('courseHours');
 
+        $idUser = session()->get('user')->id_user;
+        $user = $this->users->getSingleUser($idUser);
+        $author = $user->username . ' - Admin';
+
         $imageSmall = $request->file('courseImage');
         $imageBig = ImageHelper::insertImage($imageSmall);
 
@@ -83,7 +91,7 @@ class CourseController
 
         DB::beginTransaction();
         try {
-            $idCourse = $this->courses->insertCourse($courseName, $description, $price, $totalHours, $imageBig[0], $imageBig[1], $idCategory);
+            $idCourse = $this->courses->insertCourse($courseName, $description, $price, $totalHours, $author, $imageBig[0], $imageBig[1], $idCategory);
 
             if (is_array($request->input('lesson'))) {
                 foreach ($request->input('lesson') as $lesson) {

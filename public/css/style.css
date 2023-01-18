@@ -2046,12 +2046,12 @@ input[type='checkbox']:checked {
 
 .exit-url {
   font-size: 40px;
-  color: #5624d0;
+  color: rgb(24, 23, 23);
   margin-right: 45px;
 }
 
 .exit-url:hover {
-  color: #5624d0;
+  color: rgb(105, 102, 102);
 }
 
 .flex-link {
@@ -2125,9 +2125,42 @@ input[type='radio']:focus {
 }
 
 #votingRes {
-    font-size: 22px;
+  font-size: 22px;
 }
 
 #btnCreateCourse {
-    display: none;
+  display: none;
+  width: 30%;
+}
+
+#instructor-form {
+  justify-content: center;
+}
+
+.chb-display input {
+  display: inline-block;
+}
+
+.centerText {
+  justify-content: center;
+}
+
+.centerTitle {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.content-wrapper-instructor {
+  margin: 60px 300px;
+}
+
+@media screen and (max-width: 1440px) {
+  .content-wrapper-instructor {
+    margin: 60px 0;
+  }
+}
+
+.bckg {
+  background-color: #007bff !important;
+  color: #fff;
 }

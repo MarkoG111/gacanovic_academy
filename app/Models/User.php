@@ -70,6 +70,13 @@ class User
             ->delete();
     }
 
+    public function deleteUserVoting($id)
+    {
+        DB::table('voting')
+            ->where('id_user', $id)
+            ->delete();
+    }
+
     public function updateUser($obj, $id)
     {
         DB::table('user')

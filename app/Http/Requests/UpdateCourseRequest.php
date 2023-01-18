@@ -29,7 +29,8 @@ class UpdateCourseRequest extends FormRequest
             'coursePrice' => 'required|min:1|numeric',
             'courseHours' => 'required|min:1|numeric',
             'courseImage' => 'nullable|image|mimes:png,jpg,jpeg,gif,svg|max:2048',
-            'lesson' => 'required',
+            'lesson' => 'required|array',
+            'lesson.*' => 'required|string',
             'category' => 'exists:category,id_category',
             'topicsChb' => 'required|array'
         ];

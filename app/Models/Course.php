@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\DB;
 
 class Course extends Model
 {
-    public function insertCourse($courseName, $description, $price, $totalHours, $image_small, $image_big, $id_category)
+    public function insertCourse($courseName, $description, $price, $totalHours, $author, $image_small, $image_big, $id_category)
     {
         return DB::table('course')
             ->insertGetId([
@@ -18,6 +18,7 @@ class Course extends Model
                 'description' => $description,
                 'price' => $price,
                 'total_hours' => $totalHours,
+                'author' => $author,
                 'image_small' => $image_small,
                 'image_big' => $image_big,
                 'id_category' => $id_category,
@@ -46,12 +47,24 @@ class Course extends Model
         return DB::table('course')->paginate(6);
     }
 
-    public function filter($search, $categories, $topic, $sort, $showing)
+    public function getCoursesForInstructor($currentAuthor)
+    {
+        return DB::table('course')
+            ->where(['course.author' => $currentAuthor])
+            ->paginate(6);
+    }
+
+    public function filter($search, $categories, $topic, $sort, $showing, $currentAuthor)
     {
         $query = DB::table('course');
 
+        if ($currentAuthor) {
+            $query = $query->where('author', '!=', $currentAuthor);
+        }
+
         if ($search) {
-            $query = $query->where('course_name', 'like', '%' . $search . '%');
+            $query = $query->where('course_name', 'like', '%' . $search . '%')
+                ->orWhere('author', 'like', '%' . $search . '%');
         }
         $query = $query->join('category', 'course.id_category', '=', 'category.id_category');
 
@@ -94,7 +107,7 @@ class Course extends Model
 
     public function getSingleCourse($idCourse)
     {
-        $courseSingle =  DB::table('course')
+        $courseSingle = DB::table('course')
             ->join('category', 'category.id_category', '=', 'course.id_category')
             ->where('course.id_course', $idCourse)
             ->first();
@@ -129,15 +142,15 @@ class Course extends Model
     {
         return DB::table('course')
             ->where('id_course', $id)
-                ->update([
-                    'course_name' => $name,
-                    'description' => $description,
-                    'price' => $price,
-                    'total_hours' => $hours,
-                    'image_small' => $smallImage,
-                    'image_big' => $bigImage,
-                    'id_category' => $category,
-                    'updated_at' => $updatedAt
-                ]);
+            ->update([
+                'course_name' => $name,
+                'description' => $description,
+                'price' => $price,
+                'total_hours' => $hours,
+                'image_small' => $smallImage,
+                'image_big' => $bigImage,
+                'id_category' => $category,
+                'updated_at' => $updatedAt
+            ]);
     }
 }

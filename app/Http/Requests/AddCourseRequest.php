@@ -30,7 +30,8 @@ class AddCourseRequest extends FormRequest
             'courseHours' => 'required|min:1|numeric',
             'courseImage' => 'required|image|mimes:png,jpg,jpeg,gif,svg|max:2048',
             'category' => 'exists:category,id_category',
-            'lesson' => 'required',
+            'lesson' => 'required|array',
+            'lesson.*' => 'required|string',
             'topicsChb' => 'required|array'
         ];
     }

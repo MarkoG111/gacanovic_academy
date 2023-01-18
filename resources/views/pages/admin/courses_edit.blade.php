@@ -1,4 +1,4 @@
-@extends('layout.admin')
+@extends(session()->get('user')->id_role == 2 ? 'layout.instructor' : 'layout.admin')
 
 @php
     $arrayInputs = [
@@ -41,7 +41,6 @@
 
     $lessonObject = new stdClass();
     if (!$lessonsEdit->count() == 0) {
-        //dd($lessonsEdit);
         foreach ($lessonsEdit as $l) {
             $lesson[] = ['value' => $l->id_lesson, 'text' => $l->lesson];
         }
@@ -72,7 +71,6 @@
     }
 
     foreach ($course->topics as $ct) {
-        //dd($ct);
         $selectedTopics[] = $ct->id_topic;
     }
 
@@ -86,18 +84,35 @@
 @endphp
 
 @section('content')
-    @component('components.admin.form',
-        [
-            'headTitle' => 'Courses',
-            'title' => 'Edit Course',
-            'method' => 'PUT',
-            'action' => 'courses.update',
-            'arrayInputs' => $arrayInputs,
-            'arrayLessonsEdit' => $arrayLessonsEdit,
-            'arrayDropdowns' => $arrayDropdowns,
-            'arrayCheckboxes' => $arrayCheckboxes,
-            'id' => $course->id_course,
-            'button' => '',
-        ])
-    @endcomponent
+    @if (session()->get('user')->id_role == 1)
+        @component('components.admin.form',
+            [
+                'headTitle' => 'Courses',
+                'title' => 'Edit Course',
+                'method' => 'PUT',
+                'action' => 'courses.update',
+                'arrayInputs' => $arrayInputs,
+                'arrayLessonsEdit' => $arrayLessonsEdit,
+                'arrayDropdowns' => $arrayDropdowns,
+                'arrayCheckboxes' => $arrayCheckboxes,
+                'id' => $course->id_course,
+                'button' => '',
+            ])
+        @endcomponent
+    @else
+        @component('components.instructor.form',
+            [
+                'pageTitleInstructor' => 'Courses - Instructor',
+                'formTitleInstructor' => 'Edit Course',
+                'methodInstructor' => 'PUT',
+                'actionInstructor' => 'instructorUpdateCourse',
+                'arrayInputsInstructor' => $arrayInputs,
+                'arrayLessonsEdit' => $arrayLessonsEdit,
+                'arrayDropdownsInstructor' => $arrayDropdowns,
+                'arrayCheckboxesInstructor' => $arrayCheckboxes,
+                'id' => $course->id_course,
+                'buttonInstructor' => '',
+            ])
+        @endcomponent
+    @endif
 @endsection

@@ -7,39 +7,38 @@
                 <h4 class="title">
                     <a href="{{ url('courses', ['id' => $course->id_course]) }}">{{ $course->course_name }}</a>
                 </h4>
-                <a href="{{ route('courses', ['categories[]' => $course->id_category]) }}" class="category">{{ $course->category_name }}</a>
+                <a href="{{ route('courses', ['categories[]' => $course->id_category]) }}"
+                    class="category">{{ $course->category_name }}</a>
             </div>
 
             <div class="course-price">
                 <p class="pricee">&euro; {{ $course->price }} </p>
                 <p>{{ floatval($course->total_hours) }} hours</p>
+                <p>Author: {{ $course->author }}</p>
 
                 <div class="iconsFa">
                     @if (session()->has('user'))
-                        @if (session()->get('user')->id_user == 1)
-
-                        @else
-                            @if (isset($ids_learning_courses))
-                                @if (session()->has('user') && in_array($course->id_course, $ids_learning_courses))
-                                    <p>You already bought this course.</p>
-                                @else
-                                    <a href="javascript:void(0)" class="add-course-to-cart" data-idcourse="{{ $course->id_course }}">
-                                        <i class="fas fa-shopping-cart fa-2x clr"></i>
-                                    </a>
-                                    <a href="javascript:void(0)" class="wishhhh" data-idcourse="{{ $course->id_course }}">
-                                        <i class="fas fa-heart fa-2x clr"></i>
-                                    </a>
-                                @endif
+                        @if (isset($ids_learning_courses))
+                            @if (session()->has('user') && in_array($course->id_course, $ids_learning_courses))
+                                <p>You already bought this course.</p>
                             @else
-                                <a href="javascript:void(0)" class="add-course-to-cart" data-idcourse="{{ $course->id_course }}">
+                                <a href="javascript:void(0)" class="add-course-to-cart"
+                                    data-idcourse="{{ $course->id_course }}">
                                     <i class="fas fa-shopping-cart fa-2x clr"></i>
                                 </a>
                                 <a href="javascript:void(0)" class="wishhhh" data-idcourse="{{ $course->id_course }}">
                                     <i class="fas fa-heart fa-2x clr"></i>
                                 </a>
                             @endif
+                        @else
+                            <a href="javascript:void(0)" class="add-course-to-cart"
+                                data-idcourse="{{ $course->id_course }}">
+                                <i class="fas fa-shopping-cart fa-2x clr"></i>
+                            </a>
+                            <a href="javascript:void(0)" class="wishhhh" data-idcourse="{{ $course->id_course }}">
+                                <i class="fas fa-heart fa-2x clr"></i>
+                            </a>
                         @endif
-
                     @else
                         <a href="javascript:void(0)" class="alert-item-cart">
                             <i class="fas fa-shopping-cart fa-2x clr"></i>
@@ -53,6 +52,3 @@
         </div>
     </div>
 </div>
-
-
-

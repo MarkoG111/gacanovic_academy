@@ -8,6 +8,8 @@ use App\Http\Requests\UpdateUserRequest;
 use App\Http\Services\Helper;
 use App\Http\Services\Logs;
 use App\Http\Services\UserService;
+use App\Models\CourseOrder;
+use App\Models\Order;
 use App\Models\Role;
 use App\Models\User;
 use Exception;
@@ -18,10 +20,14 @@ class UserController extends Controller
 {
     private $userModel;
     private $roleModel;
+    private $orderModel;
+    private $orderCourseModel;
     public function __construct()
     {
         $this->userModel = new User();
         $this->roleModel = new Role();
+        $this->orderModel = new Order();
+        $this->orderCourseModel = new CourseOrder();
     }
     /**
      * Display a listing of the resource.
@@ -57,6 +63,7 @@ class UserController extends Controller
             'email' => $request->input('email'),
             'password' => md5($request->input('password')),
             'active' => 0,
+            'is_instructor' => 0,
             'id_role' => $request->input('role'),
             'created_at' => $created_at,
             'updated_at' => $created_at
@@ -123,6 +130,7 @@ class UserController extends Controller
     public function destroy($id)
     {
         try {
+            $this->userModel->deleteUserVoting($id);
             $this->userModel->deleteUser($id);
             Logs::loggingSuccess('Admin deleted a user');
             return response([], 204);

@@ -20,7 +20,7 @@
                             <h6 class="heading">
                                 <a href="{{ route('courses', ['categories[]' => $c->id_category]) }}">{{ $c->category_name }}</a>
                             </h6>
-                            <p>From: <sup></sup><strong><?= rand(20, 80) ?></strong><em>&euro;</em></p>
+                            <p>From: <sup></sup><strong>{{ $c->min_price }}</strong><em>&euro;</em></p>
                         </article>
                     </li>
                 @endforeach

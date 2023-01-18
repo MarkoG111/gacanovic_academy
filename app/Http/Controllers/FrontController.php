@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\FilterCoursesRequest;
+use App\Models\Instructor;
 use App\Models\Lesson;
 use App\Models\Order;
 use App\Models\Category;
 use App\Models\Course;
 use App\Models\Topic;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class FrontController extends Controller
@@ -18,6 +20,8 @@ class FrontController extends Controller
     protected $modelCategories;
     protected $modelLearnings;
     protected $modelLessons;
+    protected $modelUser;
+    protected $modelInstructor;
 
     public function __construct()
     {
@@ -26,6 +30,8 @@ class FrontController extends Controller
         $this->modelCategories = new Category();
         $this->modelLearnings = new Order();
         $this->modelLessons = new Lesson();
+        $this->modelUser = new User();
+        $this->modelInstructor = new Instructor();
 
         $categories = $this->modelCategories->getFeaturedCategories(3);
         $this->data['categories'] = $categories;
@@ -81,6 +87,19 @@ class FrontController extends Controller
         return view('pages.user.learnings', ['myLearnings' => $this->modelLearnings->listLearningsForUser($idUser), 'categories' => $this->modelCategories->getFeaturedCategories(3), 'lessons' => $this->modelLessons->getAllLessonsForCourses($courses)]);
     }
 
+    public function instructorPage()
+    {
+        $idUser = session()->get('user')->id_user;
+
+        $isInstructor = $this->modelUser->getSingleUser($idUser)->is_instructor;
+        if ($isInstructor === 1) {
+            return view('pages.admin.courses', ['categories' => $this->modelCategories->getAllCateogries(), 'topics' => $this->modelTopics->getAllTopics(), 'lessons' => $this->modelLessons->getAllLessons()]);
+        } else {
+            return view('pages.instructor.instructor', ['user' => $this->modelUser->getSingleUser($idUser), 'answers' => $this->modelInstructor->getPollAnswers(), 'categories' => $this->modelCategories->getAllCateogries()]);
+        }
+
+    }
+
     public function ordersPage()
     {
         return view('pages.user.orders', ['ordersAdmin' => $this->modelLearnings->listOrdersAdmin(), 'categories' => $this->modelCategories->getFeaturedCategories(3)]);
@@ -101,11 +120,16 @@ class FrontController extends Controller
         $this->data['showing'] = $showing;
 
         if (session()->has('user')) {
+            $currentAuthor = session()->get('user')->username;
+            $this->data['courses'] = $this->modelCourses->filter($search, $categoriesChb, $topicChb, $sort, $showing, $currentAuthor);
+
             $idUser = session()->get('user')->id_user;
             $this->data['myLearnings'] = $this->modelLearnings->listLearningsForUser($idUser);
+        } else {
+            $currentAuthor = '';
+            $this->data['courses'] = $this->modelCourses->filter($search, $categoriesChb, $topicChb, $sort, $showing, $currentAuthor);
         }
 
-        $this->data['courses'] = $this->modelCourses->filter($search, $categoriesChb, $topicChb, $sort, $showing);
         $this->data['topics'] = $this->modelTopics->getAllTopics();
 
         return view('pages.user.courses', $this->data);

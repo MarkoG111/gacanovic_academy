@@ -27,6 +27,7 @@
                     <div class="numbers py-5">
                         <h4 class="price">Price: {{ $course->price }} &euro;</h4>
                         <h4 class="hours">Total hours: {{ floatval($course->total_hours) }}</h4>
+                        <h4 class="py-2">Author: {{ $course->author }}</h4>
                     </div>
 
                     <div class="actions">

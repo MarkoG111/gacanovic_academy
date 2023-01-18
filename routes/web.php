@@ -10,6 +10,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\FrontController;
+use App\Http\Controllers\InstructorController;
 use App\Http\Controllers\LessonController;
 use App\Http\Controllers\WishController;
 use App\Http\Controllers\CheckoutController;
@@ -57,6 +58,15 @@ Route::group(['middleware' => ['AuthoriseLogin']], function () {
     Route::get('/cancel', [CheckoutController::class, 'cancel'])->middleware('RecordAccessToPage')->name('checkout.cancel');
 
     Route::get('/learnings', [FrontController::class, 'learningsPage'])->middleware('RecordAccessToPage');
+
+    Route::get('/instructor', [FrontController::class, 'instructorPage'])->middleware('RecordAccessToPage');
+
+    Route::get('/create', [InstructorController::class, 'instructorPage']);
+    Route::get('/index', [InstructorController::class, 'index'])->name('istructorIndex');
+    Route::post('/store', [InstructorController::class, 'store'])->name('instructorStoreCourse');
+    Route::get('instructor/{id}/edit', [InstructorController::class, 'edit'])->name('insturctorEdit');
+    Route::put('/update/{id}', [InstructorController::class, 'update'])->name('instructorUpdateCourse');
+    Route::delete('/destroy/{id}', [InstructorController::class, 'destroy']);
 });
 
 Route::get('/orders', [FrontController::class, 'ordersPage'])->middleware('RecordAccessToPage');
@@ -68,6 +78,8 @@ Route::group(['middleware' => ['Authorise404']], function () {
         Route::get('/wishlist', [WishController::class, 'getAllWishesForOneUser']);
         Route::post('/addWish', [WishController::class, 'addNewWish']);
         Route::delete('/deleteWish', [WishController::class, 'deleteWish']);
+
+        Route::post('/vote', [InstructorController::class, 'vote']);
     });
 });
 

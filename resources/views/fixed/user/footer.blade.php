@@ -29,6 +29,7 @@
                     @endif
                     @if (session()->has('user') && session()->get('user')->id_role !== 1)
                         <li><a href="{{ url('/learnings') }}">My Learnings</a></li>
+                        <li><a href="{{ url('/instructor') }}">Instructor Dashboard</a></li>
                     @endif
                     <li><a href="{{ route('logout') }}">Logout</a></li>
                 @endif

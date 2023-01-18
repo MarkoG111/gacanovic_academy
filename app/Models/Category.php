@@ -11,8 +11,11 @@ class Category extends Model
 {
     public function getFeaturedCategories($limit)
     {
-        return DB::table('category')
+        return DB::table('category AS cat')
+            ->join('course AS c', 'c.id_category', '=', 'cat.id_category')
+            ->selectRaw('cat.id_category, cat.category_name, cat.category_image, MIN(c.price) AS min_price')
             ->limit($limit)
+            ->groupBy('c.price', 'cat.id_category', 'cat.category_name', 'cat.category_image')
             ->get();
     }
 

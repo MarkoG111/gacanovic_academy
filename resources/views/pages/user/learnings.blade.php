@@ -19,7 +19,7 @@
                                         <img src="{{ asset('/img/courses/' . $learning->image_small) }}" class="learning-img"/>
                                     </div>
                                     <div class="headings-course-info">
-                                        <p><span>Bought At: </span> {{ $learning->created_at }}</p>
+                                        <p><span>Bought At: </span> {{ $learning->bought_at }}</p>
                                         <p>{{ $learning->description }}</p>
                                         <p><span>Price: </span> {{ $learning->price }} &euro;</p>
                                     </div>

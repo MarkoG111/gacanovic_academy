@@ -41,6 +41,10 @@
                                 <input type="checkbox" name="active" id="active" value="1" @if ($user->active == 1) checked @endif>
                             </div>
                             <div class="form-group">
+                                <label for="isInstructor">Is Instructor</label> <br/>
+                                <input type="checkbox" name="isInstructor" id="isInstructor" value="1" @if ($user->is_instructor == 1) checked @endif>
+                            </div>
+                            <div class="form-group">
                                 <label for="role">Role</label>
                                 <select class="form-control" name="role" id="role">
                                     <option value="0">Choose</option>

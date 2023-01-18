@@ -28,6 +28,7 @@ class AuthController extends FrontController
             'email' => $request->input('email'),
             'password' => md5($request->input('password')),
             'active' => 0,
+            'is_instructor' => 0,
             'id_role' => 2,
             'created_at' => $created_at,
             'updated_at' => $created_at
