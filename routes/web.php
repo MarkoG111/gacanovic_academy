@@ -45,6 +45,8 @@ Route::post('/contact', [ContactController::class, 'store']);
 
 Route::get('/author', [FrontController::class, 'authorPage'])->name('author')->middleware('RecordAccessToPage');
 
+Route::get('/orders', [FrontController::class, 'ordersPage'])->middleware('RecordAccessToPage');
+
 
 Route::group(['middleware' => ['AuthoriseLogin']], function () {
     Route::get('/wishlist', [FrontController::class, 'wishesPage'])->middleware('RecordAccessToPage');
@@ -69,8 +71,6 @@ Route::group(['middleware' => ['AuthoriseLogin']], function () {
 });
 
 Route::post('/webhook', [CheckoutController::class, 'webhook'])->name('checkout.webhook');
-
-Route::get('/orders', [FrontController::class, 'ordersPage'])->middleware('RecordAccessToPage');
 
 Route::get('/cart/showCourses', [CartController::class, 'getCoursesForCart']);
 
