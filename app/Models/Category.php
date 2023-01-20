@@ -78,6 +78,4 @@ class Category extends Model
             ->where('id_category', $id)
             ->delete();
     }
-
-
 }

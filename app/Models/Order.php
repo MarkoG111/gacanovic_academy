@@ -31,6 +31,4 @@ class Order extends Model
             ->orderBy('o.created_at', 'DESC')
             ->paginate(4);
     }
-
-
 }

@@ -54,5 +54,4 @@ class Lesson extends Model
             ->where('id_course', $id_course)
             ->delete();
     }
-
 }
