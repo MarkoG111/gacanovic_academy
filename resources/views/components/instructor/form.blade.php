@@ -23,6 +23,9 @@
     <div class="row">
         <div class="col-md-4">
             <div class="card card-primary">
+                @if (isset($id))
+                    <a href="{{ url('/instructor') }}" class="go-back-link">&#x2190; Go Back To Create Course</a>
+                @endif
                 <div class="card-header bckg">
                     <h3 class="card-title centerTitle">{{ $formTitleInstructor }}</h3>
                 </div>

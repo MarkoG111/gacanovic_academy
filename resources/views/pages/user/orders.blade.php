@@ -28,7 +28,7 @@
                                             <td>{{ $oa->course_name }}</td>
                                             <td>{{ $oa->price }} &euro;</td>
                                             <td>{{ $oa->total_hours }}</td>
-                                            <td>{{ $oa->created_at }}</td>
+                                            <td>{{ $oa->orderd_at }}</td>
                                             <td>{{ $oa->username }}</td>
                                         </tr>
                                     @endforeach

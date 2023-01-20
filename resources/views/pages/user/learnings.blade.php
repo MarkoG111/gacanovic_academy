@@ -22,6 +22,7 @@
                                         <p><span>Bought At: </span> {{ $learning->bought_at }}</p>
                                         <p>{{ $learning->description }}</p>
                                         <p><span>Price: </span> {{ $learning->price }} &euro;</p>
+                                        <p><span>Author: </span> {{ $learning->author }}</p>
                                     </div>
                                     <div class="stats-course-info">
                                         <p class="lessons-heading"><span>Lessons: </span> </p>

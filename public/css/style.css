@@ -2164,3 +2164,7 @@ input[type='radio']:focus {
   background-color: #007bff !important;
   color: #fff;
 }
+
+.go-back-link {
+    font-size: 18px;
+}

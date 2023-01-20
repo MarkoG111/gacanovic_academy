@@ -142,11 +142,22 @@ class CheckoutController extends FrontController
             // jedini case mi treba 'checkout.session.completed' i onda radim isto sto i u success.
             case 'checkout.session.completed':
                 $session = $event->data->object;
+                $success_url = $session->success_url;
+
                 $order = Order::where('id_session', $session->id)->first();
                 if (!$order) {
                     throw new NotFoundHttpException();
                 }
                 if ($order->status === "unpaid") {
+                    $courses = substr($success_url, strrpos($success_url, '=') + 1);
+                    $exploded_courses = explode(',', $courses);
+                    $order_last_id = $order->id_course_order;
+
+                    foreach ($exploded_courses as $course) {
+                        $courses_ids = $course;
+                        $this->courseOrderModel->insertCourseOrder($courses_ids, $order_last_id);
+                    }
+
                     $order = Order::where('id_session', $session->id)->update(['status'=>'paid']);
                 }
             default:
