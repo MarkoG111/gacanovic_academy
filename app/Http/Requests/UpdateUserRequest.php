@@ -25,6 +25,7 @@ class UpdateUserRequest extends FormRequest
     public function rules()
     {
         $id = $this->input('hiddenUserField');
+
         return [
             'username' => ['required', 'regex:/^[\d\w\_\-\.]{6,30}$/', Rule::unique('user', 'username')->ignore($id, 'id_user')],
             'email' => ['required', 'email', Rule::unique('user', 'email')->ignore($id, 'id_user')],

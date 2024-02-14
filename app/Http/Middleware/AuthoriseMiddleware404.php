@@ -19,6 +19,7 @@ class AuthoriseMiddleware404
         if (session('user')) {
             return $next($request);
         }
+        
         return abort(404);
     }
 }

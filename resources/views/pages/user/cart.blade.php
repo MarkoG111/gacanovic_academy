@@ -6,7 +6,7 @@
             <div class="col-12">
                 <h2 class="section-title mb-4">Cart</h2>
                 <form action="#">
-                    <table class="table table-bordered table-cart">
+                    <table class="table table-bordered table-cart table-responsive-sm">
                         <thead>
                             <tr>
                                 <th class="pro-thumbnail">Image</th>

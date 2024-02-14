@@ -19,6 +19,7 @@ class AuthoriseMiddleware
         if (session('user')) {
             return $next($request);
         }
+        
         return redirect()->route('login');
     }
 }

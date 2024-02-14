@@ -28,15 +28,18 @@ class WishController extends Controller
 
         try {
             $ifExists = $this->modelWish->checkIfAlereadyExists($idUser, $idCourse);
+
             if ($ifExists) {
                 return response('Course is already in your wishlist', 400);
             }
 
             $this->modelWish->addWish($idUser, $idCourse);
             Logs::loggingSuccess('User: ' . session('user')->username . ', Added Wish');
+
             return response('Successfully added course to wishlist', 201);
         } catch (PDOException $ex) {
             Logs::logging($ex->getMessage(), '[WishController::class, "addNewWish"]');
+
             return response([], 500);
         }
     }
@@ -46,9 +49,11 @@ class WishController extends Controller
         $idUser = session('user')->id_user ?? 0;
         try {
             $info = $this->modelWish->numberOfWishes($idUser);
+
             return response($info);
         } catch (PDOException $ex) {
             Logs::logging($ex->getMessage(), '[WishController::class, "numberOfWishes"]');
+
             return response([], 500);
         }
     }
@@ -59,9 +64,11 @@ class WishController extends Controller
 
         try {
             $info = $this->modelWish->getAllWishesForOneUser($idUser);
+
             return response($info);
         } catch (PDOException $ex) {
             Logs::logging($ex->getMessage(), '[WishController::class, "getAllWishesForOneUser"]');
+
             return response([], 500);
         }
     }
@@ -73,9 +80,11 @@ class WishController extends Controller
         try {
             $this->modelWish->deleteWish($idWish);
             Logs::loggingSuccess('User: ' . session('user')->username . ', Removed Wish');
+
             return response([], 204);
         } catch (PDOException $ex) {
             Logs::logging($ex->getMessage(), '[WishController::class, "deleteWish"]');
+            
             return response([], 500);
         }
     }

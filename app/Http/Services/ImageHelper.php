@@ -28,6 +28,7 @@ class ImageHelper
         $imgNew->resize(750, null, function ($constraint) {
             $constraint->aspectRatio();
         });
+
         $imgBig = 'big-' . $imgSmall;
         $imgNew->save($dir . $imgBig);
 

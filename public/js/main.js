@@ -25,8 +25,8 @@ $.ajaxSetup({
 	}
 });
 
-$(document).ready(function() {
-	$(document).on('click', '.js-pagination', function(e) {
+$(document).ready(function () {
+	$(document).on('click', '.js-pagination', function (e) {
 		e.preventDefault();
 
 		let page = $(this).data('page');
@@ -40,7 +40,7 @@ $(document).ready(function() {
 			url: page,
 			dataType: 'json',
 			method: 'GET',
-			success: function(data) {
+			success: function (data) {
 				switch (window.location.href) {
 					case baseURL + 'admin/courses/create':
 					case baseURL + 'admin/courses/create#':
@@ -71,7 +71,7 @@ $(document).ready(function() {
 						break;
 				}
 			},
-			error: function(xhr, status, error) {
+			error: function (xhr, status, error) {
 				alert(xhr.status);
 			}
 		});
@@ -83,19 +83,19 @@ $(document).ready(function() {
 
 		loadAdminMails();
 
-		$(document).on('click', '.delete-mail', function() {
+		$(document).on('click', '.delete-mail', function () {
 			let id = $(this).data('id');
 
 			$.ajax({
 				url: '/admin/contact/' + id,
 				method: 'DELETE',
-				success: function(data, status, xhr) {
+				success: function (data, status, xhr) {
 					if (xhr.status == 204) {
 						loadAdminMails();
 						$('.js-notification').html('Successfully deleted');
 					}
 				},
-				error: function(xhr, status, error) {
+				error: function (xhr, status, error) {
 					$('.js-notification').html(error);
 				}
 			});
@@ -113,19 +113,19 @@ $(document).ready(function() {
 
 		loadInstructorCourses();
 
-		$(document).on('click', '.delete_course_instructor', function() {
+		$(document).on('click', '.delete_course_instructor', function () {
 			let id = $(this).data('id');
 
 			$.ajax({
 				url: '/destroy/' + id,
 				method: 'DELETE',
-				success: function(data, status, xhr) {
+				success: function (data, status, xhr) {
 					if (xhr.status == 204) {
 						loadInstructorCourses();
 						$('.msgCrud').html('Successfully deleted.');
 					}
 				},
-				error: function(xhr, status, error) {
+				error: function (xhr, status, error) {
 					$('.msgCrud').html(error);
 				}
 			});
@@ -138,19 +138,19 @@ $(document).ready(function() {
 
 		loadAdminCourses();
 
-		$(document).on('click', '.delete_course', function() {
+		$(document).on('click', '.delete_course', function () {
 			let id = $(this).data('id');
 
 			$.ajax({
 				url: '/admin/courses/' + id,
 				method: 'DELETE',
-				success: function(data, status, xhr) {
+				success: function (data, status, xhr) {
 					if (xhr.status == 204) {
 						loadAdminCourses();
 						$('.msgCrud').html('Successfully deleted.');
 					}
 				},
-				error: function(xhr, status, error) {
+				error: function (xhr, status, error) {
 					$('.msgCrud').html(error);
 				}
 			});
@@ -163,19 +163,19 @@ $(document).ready(function() {
 
 		loadAdminCategories();
 
-		$(document).on('click', '.delete-category', function() {
+		$(document).on('click', '.delete-category', function () {
 			let id = $(this).data('id');
 
 			$.ajax({
 				url: '/admin/categories/' + id,
 				method: 'DELETE',
-				success: function(data, status, xhr) {
+				success: function (data, status, xhr) {
 					if (xhr.status == 204) {
 						loadAdminCategories();
 						$('.msgCrud').html('Successfully deleted.');
 					}
 				},
-				error: function(xhr, status, error) {
+				error: function (xhr, status, error) {
 					$('.msgCrud').html(error);
 				}
 			});
@@ -188,36 +188,36 @@ $(document).ready(function() {
 
 		loadAdminTopics();
 
-		$(document).on('click', '.delete-topic', function() {
+		$(document).on('click', '.delete-topic', function () {
 			let id = $(this).data('id');
 
 			$.ajax({
 				url: '/admin/topics/' + id,
 				method: 'DELETE',
-				success: function(data, status, xhr) {
+				success: function (data, status, xhr) {
 					if (xhr.status == 204) {
 						loadAdminTopics();
 						$('.msgCrud').html('Successfully deleted');
 					}
 				},
-				error: function(xhr, status, error) {
+				error: function (xhr, status, error) {
 					$('.msgCrud').html(error);
 				}
 			});
 		});
 	}
 
-	$('.btnRemoveLessonFromEdit').click(function() {
+	$('.btnRemoveLessonFromEdit').click(function () {
 		let id = $(this).data('id');
 		if (confirm('Are you sure you want to delete this lesson?')) {
 			$.ajax({
 				url: '/admin/lesson/' + id,
 				method: 'DELETE',
-				success: function(data, status, xhr) {
+				success: function (data, status, xhr) {
 					alert('Successfully deleted lesson.');
 					location.reload();
 				},
-				error: function(xhr, status, error) {
+				error: function (xhr, status, error) {
 					$('.msgCrud').html(error);
 					$('.msgCrud').html(xhr.status);
 				}
@@ -233,7 +233,7 @@ $(document).ready(function() {
 
 		loadAdminUsers();
 
-		$(document).on('click', '#AddUser', function() {
+		$(document).on('click', '#AddUser', function () {
 			data = {
 				username: $('#username').val().trim(),
 				email: $('#email').val().trim(),
@@ -250,14 +250,14 @@ $(document).ready(function() {
 					Accept: 'application/json'
 				},
 				data: data,
-				success: function(data, status, xhr) {
+				success: function (data, status, xhr) {
 					if (xhr.status == 201) {
 						$('.js-notification').html('Successfully added a user.');
 						resetUserForm();
 						loadAdminUsers();
 					}
 				},
-				error: function(xhr, status, error) {
+				error: function (xhr, status, error) {
 					if (xhr.status == 422) {
 						let printErrors = handleParametersException(xhr);
 						$('.js-notification').html(printErrors);
@@ -270,19 +270,19 @@ $(document).ready(function() {
 			});
 		});
 
-		$(document).on('click', '.delete-user', function() {
+		$(document).on('click', '.delete-user', function () {
 			let id = $(this).data('id');
 
 			$.ajax({
 				url: '/admin/users/' + id,
 				method: 'DELETE',
-				success: function(data, status, xhr) {
+				success: function (data, status, xhr) {
 					if (xhr.status == 204) {
 						loadAdminUsers();
 						$('.msgCrud').html('Successfully deleted');
 					}
 				},
-				error: function(xhr, status, error) {
+				error: function (xhr, status, error) {
 					$('.msgCrud').html(error);
 				}
 			});
@@ -290,7 +290,7 @@ $(document).ready(function() {
 	}
 
 	if (regExpLoginRegister.test(window.location.href)) {
-		$('#login-form-link').click(function(e) {
+		$('#login-form-link').click(function (e) {
 			e.preventDefault();
 
 			$('#login-form').delay(100).fadeIn(100);
@@ -301,7 +301,7 @@ $(document).ready(function() {
 			$(this).addClass('active');
 		});
 
-		$('#register-form-link').click(function(e) {
+		$('#register-form-link').click(function (e) {
 			e.preventDefault();
 
 			$('#register-form').delay(100).fadeIn(100);
@@ -312,7 +312,7 @@ $(document).ready(function() {
 			$(this).addClass('active');
 		});
 
-		$('#register-submit').click(function() {
+		$('#register-submit').click(function () {
 			let data = {
 				username: $('#usernameReg').val(),
 				email: $('#emailReg').val(),
@@ -333,13 +333,13 @@ $(document).ready(function() {
 						Accept: 'application/json'
 					},
 					data: data,
-					success: function(data, status, xhr) {
+					success: function (data, status, xhr) {
 						if (xhr.status == 201) {
 							$('#notification').html('Successfully Registered!');
 							resetRegistrationForm();
 						}
 					},
-					error: function(xhr, status, error) {
+					error: function (xhr, status, error) {
 						if (xhr.status == 422) {
 							let printErrors = handleParametersException(xhr);
 							$('#notification').html(printErrors);
@@ -356,7 +356,7 @@ $(document).ready(function() {
 
 	let counter = 1;
 	let maxLessons = 3;
-	$(document).on('click', '#btnAddLesson', function() {
+	$(document).on('click', '#btnAddLesson', function () {
 		if (maxLessons > counter) {
 			$('#lesson input:text').attr('name', 'lesson[]');
 
@@ -390,7 +390,7 @@ $(document).ready(function() {
 		}
 	});
 
-	$(document).on('click', '#btnRemoveLesson', function(e) {
+	$(document).on('click', '#btnRemoveLesson', function (e) {
 		e.preventDefault();
 
 		$(this).parent('div').parent('div').remove();
@@ -401,11 +401,11 @@ $(document).ready(function() {
 		}
 	});
 
-	$('.alert-item-cart').click(function() {
+	$('.alert-item-cart').click(function () {
 		alert('You must login first to add course in cart.');
 	});
 
-	$('.alert-item-wish').click(function() {
+	$('.alert-item-wish').click(function () {
 		alert('You must login first to add this course in wishlist.');
 	});
 }); // END of Document
@@ -461,12 +461,12 @@ function loadAdminMails() {
 		url: '/admin/contact',
 		dataType: 'json',
 		method: 'GET',
-		success: function(data) {
+		success: function (data) {
 			let paginationLinks = Math.ceil(data.total / data.per_page);
 			printPagination(paginationLinks, data.path);
 			printAllMailsTable(data.data);
 		},
-		error: function(xhr, status, error) {
+		error: function (xhr, status, error) {
 			console.log(xhr.status);
 			console.log(xhr.responseText);
 			console.log(error);
@@ -502,12 +502,12 @@ function loadInstructorCourses() {
 		url: '/index',
 		dataType: 'json',
 		method: 'GET',
-		success: function(data) {
+		success: function (data) {
 			let paginationLinks = Math.ceil(data.total / data.per_page);
 			printPagination(paginationLinks, data.path);
 			printAllCoursesTable(data.data);
 		},
-		error: function(xhr, status, error) {
+		error: function (xhr, status, error) {
 			alert(xhr.status);
 		}
 	});
@@ -518,12 +518,12 @@ function loadAdminCourses() {
 		url: '/admin/courses',
 		dataType: 'json',
 		method: 'GET',
-		success: function(data) {
+		success: function (data) {
 			let paginationLinks = Math.ceil(data.total / data.per_page);
 			printPagination(paginationLinks, data.path);
 			printAllCoursesTable(data.data);
 		},
-		error: function(xhr, status, error) {
+		error: function (xhr, status, error) {
 			alert(xhr.status);
 		}
 	});
@@ -549,14 +549,14 @@ function printAllCoursesTable(data) {
                 <td>${i.updated_at}</td>
                 <td><a href="${regExpInstructor.test(window.location.href) ||
 				regExpInstructorEditCourse.test(window.location.href)
-					? '/instructor/' + id_course + '/edit'
-					: '/admin/courses/' +
-						id_course +
-						'/edit'}"  class='btn btn-outline-success' data-id='${i.id_course}'>Edit</a></td>
+				? '/instructor/' + id_course + '/edit'
+				: '/admin/courses/' +
+				id_course +
+				'/edit'}"  class='btn btn-outline-success' data-id='${i.id_course}'>Edit</a></td>
                 <td><a href='#' class='btn btn-outline-danger ${regExpInstructor.test(window.location.href) ||
 				regExpInstructorEditCourse.test(window.location.href)
-					? 'delete_course_instructor'
-					: 'delete_course'} delete_course' data-id='${i.id_course}'>Delete</a></td>
+				? 'delete_course_instructor'
+				: 'delete_course'} delete_course' data-id='${i.id_course}'>Delete</a></td>
             </tr>`;
 	}
 
@@ -568,12 +568,12 @@ function loadAdminCategories() {
 		url: '/admin/categories',
 		dataType: 'json',
 		method: 'GET',
-		success: function(data) {
+		success: function (data) {
 			let paginationLinks = Math.ceil(data.total / data.per_page);
 			printPagination(paginationLinks, data.path);
 			printAllCategoriesTable(data.data);
 		},
-		error: function(xhr, status, error) {
+		error: function (xhr, status, error) {
 			console.log(error);
 			alert(xhr.status);
 		}
@@ -610,12 +610,12 @@ function loadAdminTopics() {
 		url: '/admin/topics',
 		method: 'GET',
 		dataType: 'json',
-		success: function(data) {
+		success: function (data) {
 			let paginationLinks = Math.ceil(data.total / data.per_page);
 			printPagination(paginationLinks, data.path);
 			printAllTopicsTable(data.data);
 		},
-		error: function(xhr, status, data) {
+		error: function (xhr, status, data) {
 			console.log(error);
 		}
 	});
@@ -649,12 +649,12 @@ function loadAdminUsers() {
 		url: '/admin/users',
 		method: 'GET',
 		dataType: 'json',
-		success: function(data) {
+		success: function (data) {
 			let paginationLinks = Math.ceil(data.total / data.per_page);
 			printPagination(paginationLinks, data.path);
 			printAllUsersTable(data.data);
 		},
-		error: function(xhr, status, error) {
+		error: function (xhr, status, error) {
 			console.log(error);
 		}
 	});
@@ -744,6 +744,7 @@ function resetRegistrationForm() {
 	$('#passwordReg').val('');
 	$('#passwordRegConf').val('');
 }
+
 function resetUserForm() {
 	$('#username').val('');
 	$('#email').val('');
@@ -765,7 +766,7 @@ function handleParametersException(xhr) {
 	return printErrors;
 }
 
-$('#btnVote').click(function() {
+$('#btnVote').click(function () {
 	let idUser = $('#hdnIdUsr').val();
 	let answer = $("input[name='teachingAns']:checked").val();
 	// console.log(answer);
@@ -780,7 +781,7 @@ $('#btnVote').click(function() {
 				idUser: idUser,
 				answer: answer
 			},
-			success: function(data, status, xhr) {
+			success: function (data, status, xhr) {
 				if (xhr.status == 201) {
 					$('#votingRes').html('You have now become instructor.');
 
@@ -792,7 +793,7 @@ $('#btnVote').click(function() {
 					$('#btnVote').css('display', 'none');
 				}
 			},
-			error: function(xhr, status, error) {
+			error: function (xhr, status, error) {
 				console.log(xhr.status);
 				console.log(error);
 			}

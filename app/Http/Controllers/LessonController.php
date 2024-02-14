@@ -93,9 +93,11 @@ class LessonController extends Controller
         try {
             $this->lessonModel->deleteLesson($id);
             Logs::loggingSuccess('Admin deleted a lesson');
+
             return response([], 204);
         } catch (\Exception $ex) {
             Logs::logging($ex->getMessage(), '[LessonController::class, "destroy"]');
+
             return Helper::returnGenericErrorAjax();
         }
     }

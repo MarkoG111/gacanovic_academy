@@ -12,7 +12,7 @@
                     @else
                         <div class="row">
                             @foreach ($myLearnings as $learning)
-                                <div class="col-3">
+                                <div class="col-sm-6 col-md-3">
                                     <input type="hidden" name="hiddenIdCourse" id="{{ $learning->id_course }}" value="{{ $learning->id_course }}">
 
                                     <div class="image-course-info">

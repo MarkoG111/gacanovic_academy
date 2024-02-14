@@ -6,6 +6,7 @@ use App\Models\CourseOrder;
 use Illuminate\Http\Request;
 use App\Models\Course;
 use App\Models\Order;
+use Exception;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 
@@ -57,7 +58,7 @@ class CheckoutController extends FrontController
         $checkout_session = $stripe->checkout->sessions->create([
             'line_items' => $lineItems,
             'mode' => 'payment',
-            'success_url' => route('checkout.success', [], true)."?id_session={CHECKOUT_SESSION_ID}&courses=$imploded_courses",
+            'success_url' => route('checkout.success', [], true) . "?id_session={CHECKOUT_SESSION_ID}&courses=$imploded_courses",
             'cancel_url' => route('checkout.cancel', [], true),
         ]);
 
@@ -104,7 +105,7 @@ class CheckoutController extends FrontController
                     $this->courseOrderModel->insertCourseOrder($courses_ids, $order_last_id);
                 }
 
-                $order = Order::where('id_session', $session->id)->update(['status'=>'paid']);
+                $order = Order::where('id_session', $session->id)->update(['status' => 'paid']);
             }
 
             return view('pages.user.checkout-success');
@@ -158,7 +159,7 @@ class CheckoutController extends FrontController
                         $this->courseOrderModel->insertCourseOrder($courses_ids, $order_last_id);
                     }
 
-                    $order = Order::where('id_session', $session->id)->update(['status'=>'paid']);
+                    $order = Order::where('id_session', $session->id)->update(['status' => 'paid']);
                 }
             default:
                 echo 'Received unknown event type ' . $event->type;

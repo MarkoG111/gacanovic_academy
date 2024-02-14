@@ -53,10 +53,17 @@
         padding: 14px;
         border-radius: 2px;
     }
+
     .btn-go-home:hover {
         background: #b7d48c;
     }
 
+
+    @media screen and (max-width: 420px) {
+        .btn-go-home {
+            font-size: 14px;
+        }
+    }
 </style>
 
 <body>

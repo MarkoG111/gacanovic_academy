@@ -96,7 +96,7 @@ class ContactController extends Controller
             return response([], 204);
         } catch (PDOException $ex) {
             Logs::logging($ex->getMessage(), '[ContactController::class, "destroy"]');
-            Helper::returnGenericErrorAjax();
+            return Helper::returnGenericErrorAjax();
         }
     }
 }

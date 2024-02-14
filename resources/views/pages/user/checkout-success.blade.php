@@ -52,10 +52,10 @@
         padding: 14px;
         border-radius: 2px;
     }
+
     .btn-go-home:hover {
         background: #b7d48c;
     }
-
 </style>
 
 <body>
@@ -73,4 +73,5 @@
 <script>
     localStorage.setItem('courses', JSON.stringify([]));
 </script>
+
 </html>

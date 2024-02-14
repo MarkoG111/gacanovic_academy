@@ -1,28 +1,29 @@
 if (window.location.href.indexOf('contact') != -1) {
-	var button = document.querySelector('#submitContact');
+	let button = document.querySelector('#submitContact');
+
 	button.addEventListener('click', contact);
 
-	document.querySelector('#resetContact').addEventListener('click', function() {
+	document.querySelector('#resetContact').addEventListener('click', function () {
 		document.querySelector('#subject').value = '';
 		document.querySelector('#email').value = '';
 		document.querySelector('#message').value = '';
 	});
 
 	function contact() {
-		var email = document.querySelector('#email').value;
-		var subject = document.querySelector('#subject').value;
-		var message = document.querySelector('#message').value;
+		let email = document.querySelector('#email').value;
+		let subject = document.querySelector('#subject').value;
+		let message = document.querySelector('#message').value;
 
-		var emailError = document.querySelector('#emailHelp');
-		var subjectError = document.querySelector('#subjectHelp');
-		var messageError = document.querySelector('#messageHelp');
+		let emailError = document.querySelector('#emailHelp');
+		let subjectError = document.querySelector('#subjectHelp');
+		let messageError = document.querySelector('#messageHelp');
 
-		var emailTrue = true;
-		var subjectTrue = true;
-		var messageTrue = true;
+		let emailTrue = true;
+		let subjectTrue = true;
+		let messageTrue = true;
 
-		var reSubject = /[A-z0-9]+/;
-		var reEmail = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+		let reSubject = /[A-z0-9]+/;
+		let reEmail = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
 
 		if (subject) {
 			if (!reSubject.test(subject)) {
@@ -67,24 +68,27 @@ if (window.location.href.indexOf('contact') != -1) {
 					email,
 					message
 				},
-				success: function(data) {
+				success: function (data) {
 					document.querySelector('#subject').value = '';
 					document.querySelector('#email').value = '';
 					document.querySelector('#message').value = '';
 
-					var alertDiv = document.querySelector('#successMessage');
-					var message = document.querySelector('#msg');
+					let alertDiv = document.querySelector('#successMessage');
+					let message = document.querySelector('#msg');
 
 					alertDiv.classList.remove('invisible');
 					alertDiv.classList.add('alert-success');
+
 					message.textContent = data.success;
-					setTimeout(function() {
+
+					setTimeout(function () {
 						alertDiv.classList.add('invisible');
 					}, 2500);
 				},
-				error: function(xhr, status, err) {
-					var msgAlert = document.querySelector('#successMessage');
-					var message = document.querySelector('#msg');
+				error: function (xhr, status, err) {
+					let msgAlert = document.querySelector('#successMessage');
+					let message = document.querySelector('#msg');
+
 					switch (xhr.status) {
 						case 409:
 							msgAlert.classList.remove('invisible');

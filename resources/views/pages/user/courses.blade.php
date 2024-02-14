@@ -66,30 +66,28 @@
                         </div>
 
                         <div class="shop-product-wrap grid with-sidebar row">
-                                @foreach ($courses as $course)
-                                    @if (session()->has('user') && count($myLearnings) > 0)
-                                        @foreach ($myLearnings as $learning)
-                                            <?php
-                                            $ids_learning_courses[] = $learning->id_course;
-                                            ?>
-                                        @endforeach
-                                    @endif
+                            @foreach ($courses as $course)
+                                @if (session()->has('user') && count($myLearnings) > 0)
+                                    @foreach ($myLearnings as $learning)
+                                        <?php
+                                        $ids_learning_courses[] = $learning->id_course;
+                                        ?>
+                                    @endforeach
+                                @endif
 
-                                    @if (session()->has('user') && session()->get('user')->id_role == 2 && count($myLearnings) > 0)
-                                        @component('components.single_course',
-                                            [
-                                                'course' => $course,
-                                                'ids_learning_courses' => $ids_learning_courses,
-                                            ])
-                                        @endcomponent
-                                    @else
-                                        @component('components.single_course',
-                                            [
-                                                'course' => $course,
-                                            ])
-                                        @endcomponent
-                                    @endif
-                                @endforeach
+                                @if (session()->has('user') && session()->get('user')->id_role == 2 && count($myLearnings) > 0)
+                                    @component('components.single_course', [
+                                        'course' => $course,
+                                        'ids_learning_courses' => $ids_learning_courses,
+                                    ])
+                                    @endcomponent
+                                @else
+                                    @component('components.single_course', [
+                                        'course' => $course,
+                                    ])
+                                    @endcomponent
+                                @endif
+                            @endforeach
 
 
                             @if (!count($courses))

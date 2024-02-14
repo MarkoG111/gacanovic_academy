@@ -60,6 +60,7 @@ class InstructorController extends Controller
         try {
             $this->instructorModel->voting($answer, $idUser);
             $this->instructorModel->updateToInstructor($idUser);
+
             return response([], 201);
         } catch (PDOException $ex) {
             Logs::logging($ex->getMessage(), '[InstructorController::class, "update"]');
@@ -73,6 +74,7 @@ class InstructorController extends Controller
         $this->data['topics'] = $this->topics->getAllTopics();
         $this->data['lessonsEdit'] = $this->lessons->getAllLessonsForCourse($id);
         $this->data['course'] = $this->courses->getSingleCourse($id);
+
         return view('pages.admin.courses_edit', $this->data);
     }
 
@@ -87,6 +89,7 @@ class InstructorController extends Controller
         $image = $request->file('courseImage');
 
         DB::beginTransaction();
+
         if ($image != null) {
             $newImage = ImageHelper::insertImage($image);
             try {
@@ -112,10 +115,12 @@ class InstructorController extends Controller
                 DB::commit();
 
                 Logs::loggingSuccess('Author just updated a course.');
+
                 return redirect()->route('insturctorEdit', ['id' => $id])->with('success', 'Course has been updated.');
             } catch (PDOException $ex) {
                 DB::rollBack();
                 Logs::logging($ex->getMessage(), '[InstructorController::class, "update"]');
+
                 return Helper::returnGenericError();
             }
         } else {
@@ -147,6 +152,7 @@ class InstructorController extends Controller
             } catch (PDOException $ex) {
                 DB::rollBack();
                 Logs::logging($ex->getMessage(), '[InstructorController::class, "update"]');
+
                 return Helper::returnGenericError();
             }
         }
@@ -174,6 +180,7 @@ class InstructorController extends Controller
         $idCategory = $request->input('category');
 
         DB::beginTransaction();
+
         try {
             $idCourse = $this->courses->insertCourse($courseName, $description, $price, $totalHours, $author, $imageBig[0], $imageBig[1], $idCategory);
 
@@ -192,10 +199,12 @@ class InstructorController extends Controller
             DB::commit();
 
             Logs::loggingSuccess('Author just added a new course.');
+
             return redirect()->back()->with('success', 'Course has been added.');
         } catch (PDOException $ex) {
-            DB::rollBack ();
+            DB::rollBack();
             Logs::logging($ex->getMessage(), '[InstructorController::class, "store"]');
+
             return Helper::returnGenericError();
         }
     }
@@ -203,6 +212,7 @@ class InstructorController extends Controller
     public function destroy(Request $request, $id)
     {
         DB::beginTransaction();
+
         try {
             $this->courseTopics->deleteCourse($id);
             $this->lessons->deleteCourseLesson($id);
@@ -213,6 +223,7 @@ class InstructorController extends Controller
             DB::commit();
 
             Logs::loggingSuccess('Author just deleted a course.');
+
             return response([], 204);
         } catch (PDOException $ex) {
             DB::rollback();

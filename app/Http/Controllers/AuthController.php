@@ -23,6 +23,7 @@ class AuthController extends FrontController
     public function doRegister(RegistrationRequest $request)
     {
         $created_at = date('Y-m-d H-i-s', time());
+
         $obj = [
             'username' => $request->input('username'),
             'email' => $request->input('email'),
@@ -79,6 +80,7 @@ class AuthController extends FrontController
     {
         if ($request->session()->has('user')) {
             $time = Helper::getTime();
+
             try {
                 $this->model->updateActivityLogout(session()->get('user')->id_user, 0, $time);
 

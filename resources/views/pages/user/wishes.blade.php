@@ -4,9 +4,9 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                 <h2 class="section-title mb-4">Wishes</h2>
+                <h2 class="section-title mb-4">Wishes</h2>
                 <form action="#">
-                    <table class="table table-bordered table-wish">
+                    <table class="table table-bordered table-wish table-responsive-sm">
                         <thead>
                             <tr>
                                 <th class="pro-thumbnail">Image</th>
@@ -20,7 +20,7 @@
 
                         </tbody>
                         <tfoot>
-                           
+
                         </tfoot>
                     </table>
                 </form>

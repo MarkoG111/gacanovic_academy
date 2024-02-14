@@ -41,9 +41,11 @@
 
 <div class="wrapper row5">
     <div id="copyright" class="hoc clear">
-        <p class="fl_left">&copy; Copyright, <a href="{{ route('author') }}">Marko Gačanović 38 / 17</a> &nbsp; & &nbsp; <a href="{{ asset('dokumentacija.pdf') }}">Documentation</a> </p>
+        <p class="fl_left">&copy; Copyright, <a href="{{ route('author') }}">Marko Gačanović</a> &nbsp; & &nbsp; <a
+                href="{{ asset('Dokument.pdf') }}">Documentation</a> </p>
 
-        <p class="fl_right">Template by <a target="_blank" href="https://www.os-templates.com/" title="Free Website Templates">OS Templates</a></p>
+        <p class="fl_right">Template by <a target="_blank" href="https://www.os-templates.com/"
+                title="Free Website Templates">OS Templates</a></p>
     </div>
 </div>
 
