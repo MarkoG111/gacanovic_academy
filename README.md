@@ -8,6 +8,14 @@ The platform supports three user roles — Admin, Instructor, and Student — ea
 📘 Full Project Documentation (PDF) - https://github.com/MarkoG111/gacanovic_academy/blob/master/public/Dokument.pdf <br/>
 🗄️ Database SQL File - https://github.com/MarkoG111/gacanovic_academy/blob/master/gacanovic_academy.sql
 
+![Laravel](https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white)
+![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)	
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)	
+[![Bootstrap](https://img.shields.io/badge/Bootstrap-5.3-purple.svg?style=for-the-badge&logo=bootstrap)](https://getbootstrap.com/)
+[![jQuery](https://img.shields.io/badge/jQuery-AJAX-blue.svg?style=for-the-badge&logo=jquery)](https://jquery.com/)
+[![MVC](https://img.shields.io/badge/Architecture-MVC-success.svg?style=for-the-badge&logo=codeigniter)]()
+
+
 ---
 
 ## 🧩 Key Features:
