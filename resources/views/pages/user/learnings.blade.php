@@ -16,7 +16,8 @@
                                     <input type="hidden" name="hiddenIdCourse" id="{{ $learning->id_course }}" value="{{ $learning->id_course }}">
 
                                     <div class="image-course-info">
-                                        <img src="{{ asset('/img/courses/' . $learning->image_small) }}" class="learning-img"/>
+                                        <img src="{{ file_exists(public_path('/img/courses/' . $course->image_small)) ? asset('/img/courses/' . $course->image_small) : asset('storage/courses/' . $course->image_small) }}"
+                                            alt="webdev" class=learning-img" />                                    
                                     </div>
                                     <div class="headings-course-info">
                                         <p><span>Bought At: </span> {{ $learning->bought_at }}</p>
