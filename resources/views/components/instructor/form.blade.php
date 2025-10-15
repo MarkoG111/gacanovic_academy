@@ -50,7 +50,8 @@
                                 @endif
 
                                 @if (isset($input['image']))
-                                    <img src="{{ asset("/img/".$input['folder'] . $input['image'] ?? '') }}" alt="{{ $input['name'] ?? '' }}" class="small-img" />
+                                    {{-- <img src="{{ asset("/img/".$input['folder'] . $input['image'] ?? '') }}" alt="{{ $input['name'] ?? '' }}" class="small-img" /> --}}
+                                    <img src="{{ asset('storage/courses/' . $input['image']) }}" alt="webdev" class="small-img" />
                                 @endif
 
                                 @if (($input['type']) == 'textarea')
