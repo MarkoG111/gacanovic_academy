@@ -1,7 +1,8 @@
 <div class="col-xl-4 col-md-6 col-12 pb-30 pt-10 pr-25">
     <div class="product {{ $course->id_course }}">
-        <img src="{{ asset('/img/courses/' . $course->image_small) }}" alt="webdev" class="img-fluid" />
-
+      <img src="{{ file_exists(public_path('/img/courses/' . $course->image_small)) ? asset('/img/courses/' . $course->image_small) : asset('storage/courses/' . $course->image_small) }}"
+            alt="webdev" class="img-fluid" />
+        
         <div class="content">
             <div class="text-desc">
                 <h4 class="title">
