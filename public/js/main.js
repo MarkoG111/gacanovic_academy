@@ -1,5 +1,5 @@
-const baseURL = 'http://localhost:8000/'; // doesn't work for 127.0.0.1
-// const baseURL = 'http://127.0.0.1:8000/'
+// const baseURL = 'http://localhost:8000/'; // doesn't work for 127.0.0.1
+const baseURL = 'http://127.0.0.1:8000/'
 
 const regExpLoginRegister = new RegExp(`^${baseURL}login[\#]?$`);
 
