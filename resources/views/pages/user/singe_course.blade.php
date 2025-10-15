@@ -15,7 +15,7 @@
         <div class="row">
             <div class="col-md-6 col-12 text-center mx-auto my-5">
                 <div class="single-image">
-                    <img src="{{ asset('/img/courses/' . $course->image_big) }}" class="img-fluid" alt="{{ $course->course_name }}">
+                    <img src="{{ file_exists(public_path('/img/courses/' . $course->image_small)) ? asset('/img/courses/' . $course->image_small) : asset('storage/courses/' . $course->image_small) }}" alt="webdev" class=img-fluid" />
                 </div>
             </div>
             <div class="col-md-6 col-12 text-md-left text-center">
