@@ -66,7 +66,7 @@ Password: admin007
 ## 🧰 Installation & Setup 
 1. <b>Clone the repository:</b> 
 ```bash 
-git clone https://github.com/MarkoG111/Academy-Gacanovic.git 
+git clone https://github.com/MarkoG111/gacanovic_academy.git 
 ```
 2. <b>Install dependencies:</b> composer install || composer update 
 3. <b>Create a .env file:</b> cp .env.example .env 
