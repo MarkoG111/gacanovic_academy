@@ -25,7 +25,7 @@
                     <li><a href="{{ route('login') }}">Login</a></li>
                 @else
                     @if (session()->has('user') && session()->get('user')->id_role == 1)
-                        <li><a href="{{ route('logs') }}">Admin</a></li>
+                        <li><a href="{{ url('/admin/courses/create') }}">Admin</a></li>
                     @endif
                     @if (session()->has('user') && session()->get('user')->id_role !== 1)
                         <li><a href="{{ url('/learnings') }}">My Learnings</a></li>
