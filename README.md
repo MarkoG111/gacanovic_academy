@@ -68,7 +68,7 @@ Password: admin007
 ```bash 
 git clone https://github.com/MarkoG111/gacanovic_academy.git 
 ```
-2. <b>Install dependencies:</b> composer install || composer update 
+2. <b>Install dependencies:</b> composer update 
 3. <b>Create a .env file:</b> cp .env.example .env 
 4. <b>Configure database credentials and Stripe keys in .env</b> 
 5. <b>Import the SQL database:</b> mysql -u root -p gacanovic_academy < gacanovic_academy.sql
