@@ -1,6 +1,6 @@
 # 🎓 Gačanović Academy 
 Gačanović Academy is a full-featured web application built with the Laravel framework, designed for the presentation, purchase, and management of online e-courses across various categories and topics. <br/>
-The platform supports three user roles — Admin, Instructor, and Student — each with distinct permissions and features.
+The platform supports three user roles: Admin, Instructor, and Student - each with distinct permissions and features.
 
 🔗 Live demo: https://gacho-dev.rs/gacanovic-academy
 
