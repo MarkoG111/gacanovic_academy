@@ -5,7 +5,7 @@ The platform supports three user roles: Admin, Instructor, and Student - each wi
 🔗 Live demo: https://gacanovic-academy.infinityfree.me/
 
 📄 Documentation and Database: <br/>
-📘 Full Project Documentation (PDF) - https://github.com/MarkoG111/gacanovic_academy/blob/master/public/Dokument.pdf <br/>
+📘 Documentation (PDF) - https://github.com/MarkoG111/gacanovic_academy/blob/master/public/Dokument.pdf <br/>
 🗄️ Database SQL File - https://github.com/MarkoG111/gacanovic_academy/blob/master/gacanovic_academy.sql
 
 ![Laravel](https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white)
